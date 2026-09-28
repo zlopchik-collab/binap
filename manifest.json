@@ -1,0 +1,21 @@
+{
+ "name": "Бизнес на пальцах",
+ "short_name": "На пальцах",
+ "start_url": "/index.html",
+ "display": "standalone",
+ "background_color": "#F5F7F6",
+ "theme_color": "#0E6B53",
+ "lang": "ru",
+ "icons": [
+  {
+   "src": "/img/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/img/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}
