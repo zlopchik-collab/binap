@@ -7,7 +7,7 @@
 window.SITE_CONFIG = {
   // Ссылки на каналы. Пример: max: "https://max.ru/biznes_na_paltsah"
   LINKS: {
-    max:  "",
+    max:  "https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws",
     vk:   "",
     dzen: "",
     tg:   "",
