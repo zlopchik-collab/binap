@@ -45,6 +45,34 @@
     } else { a.className += ' pending'; a.textContent = 'ссылка появится скоро'; a.removeAttribute('href'); }
   });
 
+  /* Подсказки на графиках: наведение мышью или касание */
+  $$('.chart-plot').forEach(function(plot){
+    var tip = plot.querySelector('.chart-tip'), svg = plot.querySelector('svg');
+    function show(el){
+      var r = el.getBoundingClientRect(), pr = plot.getBoundingClientRect();
+      tip.textContent = el.getAttribute('data-tip'); tip.hidden = false;
+      var x = r.left + r.width/2 - pr.left;
+      x = Math.max(tip.offsetWidth/2, Math.min(pr.width - tip.offsetWidth/2, x));
+      tip.style.left = x + 'px'; tip.style.top = (r.top - pr.top + 12) + 'px';
+    }
+    $$('[data-tip]', svg).forEach(function(el){
+      el.addEventListener('mouseenter', function(){ show(el); });
+      el.addEventListener('click', function(){ show(el); });
+    });
+    plot.addEventListener('mouseleave', function(){ tip.hidden = true; });
+  });
+
+  /* Видео: плеер загружается только по нажатию */
+  $$('.video-play').forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = document.createElement('iframe');
+      f.src = b.getAttribute('data-src') + (b.getAttribute('data-src').indexOf('?') < 0 ? '?' : '&') + 'autoplay=1';
+      f.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+      f.allowFullscreen = true; f.title = b.getAttribute('aria-label');
+      b.replaceWith(f);
+    });
+  });
+
   /* Сроки для ИП */
   var dl = document.getElementById('deadlines-list');
   if(dl && C.DEADLINES){
