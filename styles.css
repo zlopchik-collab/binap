@@ -248,3 +248,6 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .video-icon{width:64px;height:64px;border-radius:50%;background:var(--accent);position:relative}
 .video-icon::after{content:"";position:absolute;left:26px;top:20px;border-style:solid;border-width:12px 0 12px 19px;border-color:transparent transparent transparent var(--accent-ink)}
 .video iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:var(--r)}
+.cover{display:block;width:100%;height:auto;margin:0 0 24px;border-radius:var(--r);border:1px solid var(--line)}
+.video-own video{display:block;width:100%;max-width:360px;aspect-ratio:9/16;margin:0 auto;background:var(--ink);border-radius:var(--r)}
+.video-own figcaption{text-align:center}
