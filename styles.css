@@ -154,7 +154,9 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .prose li{margin-bottom:6px}
 .prose h2{margin:34px 0 14px;font-size:24px}
 .prose .tablewrap{overflow-x:auto;margin:0 0 18px}
-.prose table{border-collapse:collapse;width:100%;font-size:15px;min-width:420px}
+.prose table{border-collapse:collapse;width:100%;font-size:15px}
+.prose td:last-child{white-space:nowrap}
+.prose td:last-child:first-child{white-space:normal}
 .prose th,.prose td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
 .prose th{font:600 12px/1.4 var(--mono);color:var(--muted)}
 .offer{font-weight:600}
