@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;0,900;1,600&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="../styles.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "До 100 000 ₽ за одну ошибку в зарплатной платёжке", "description": "Если у сотрудника есть исполнительный лист, в платёжке на зарплату нужно указывать код вида дохода и сумму удержания. Ошибка — штраф до 100 000 ₽.", "datePublished": "2026-10-06", "dateModified": "2026-10-06", "author": {"@type": "Person", "name": "Дмитрий Бочкарев", "jobTitle": "Главный редактор"}, "publisher": {"@type": "Organization", "name": "Бизнес на пальцах"}, "mainEntityOfPage": "https://binap.ru/stati/shtrafy-oshibki-zarplatnye-platezhki.html", "inLanguage": "ru"}</script>
+
 </head><body class="is-article" data-root="../">
 <header class="top"><div class="wrap">
 <a class="brand" href="../index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="var(--accent)"/><g stroke="var(--accent-ink)" stroke-width="3" stroke-linecap="round"><path d="M11 11v18M17 11v18M23 11v18M29 11v18"/><path d="M8 25L32 14"/></g></svg><b>Бизнес на пальцах</b></a>
@@ -35,14 +36,12 @@
 <h1>До 100 000 ₽ за одну ошибку в зарплатной платёжке</h1>
 <div class="meta"><span>Обновлено <time datetime="2026-10-06">6 октября 2026</time></span><span>Дмитрий Бочкарев</span><span>1 мин чтения</span></div>
 <img class="cover" src="../img/cover/shtrafy-oshibki-zarplatnye-platezhki.png" width="1200" height="630" alt="">
-<div class="prose"><p>Работодателей начали штрафовать за ошибки в платёжках на зарплату сотрудникам, у которых есть долги по исполнительным документам: алименты, кредиты, штрафы.</p>
-<p><strong>Что нужно указывать.</strong> С 1 сентября 2026 года в таких платёжках обязательны:</p>
-<ul>
-<li><strong>поле 20</strong> — код вида дохода;</li>
-<li><strong>поле 24</strong> — сумма, удержанная по исполнительному документу, в формате <code>//ВЗС//сумма//</code>.</li>
-</ul>
-<p>Банк по этим данным понимает, какую часть зарплаты нельзя списывать со счёта должника.</p>
-<p><strong>Сколько стоит ошибка</strong> (ч. 3 ст. 17.14 КоАП):</p>
+<div class="prose"><p>По данным Главбуха и РНК, этой осенью работодателей начали штрафовать за ошибки в платёжках на зарплату сотрудникам с долгами по исполнительным документам: алиментам, кредитам, штрафам.</p>
+<p><strong>Что нужно указывать.</strong> Обязанность не новая: её установил закон об исполнительном производстве (ч. 5.1 ст. 70 и ч. 3 ст. 98 закона № 229-ФЗ), а формат — Положение ЦБ № 762-П, которое действует с 10.09.2021:
+- <strong>поле 20</strong> («Назначение платежа, код») — код вида дохода. Для зарплаты обычно «1». Код ставят при каждой выплате дохода физлицу, даже если удержаний нет;
+- <strong>поле 24</strong> («Назначение платежа») — сумма, удержанная по исполнительному документу, в формате <code>//ВЗС//1000-00//</code>: рубли от копеек отделяют дефисом, для целых рублей после дефиса пишут 00.</p>
+<p>По коду банк понимает, какую часть денег на счёте должника нельзя списывать по требованию приставов.</p>
+<p><strong>Сколько стоит ошибка.</strong> Неверный или пустой код и сумму удержания могут счесть нарушением ч. 3 ст. 17.14 КоАП:</p>
 <div class="tablewrap"><table>
 <thead>
 <tr>
@@ -61,14 +60,12 @@
 </tr>
 </tbody>
 </table></div>
-<p>Штраф грозит и за неверный код, и за пустое поле — даже если сама зарплата пришла правильно.</p>
-<p><strong>Что сделать:</strong></p>
-<ol>
-<li>Выпишите сотрудников, по которым приходили исполнительные листы или постановления приставов.</li>
-<li>Проверьте шаблон зарплатной платёжки в банке или бухгалтерской программе: заполняется ли поле 20 и сумма удержания в поле 24.</li>
-<li>Если зарплату платите реестром через зарплатный проект — уточните у банка, как в реестре передаются код дохода и сумма удержания.</li>
-</ol></div>
-<div class="sources"><span class="label">Источники</span><ul><li><a href="https://www.glavbukh.ru/news/59239-s-1-oktyabrya-buhgaltery-nachali-poluchat-shtrafy-minimum-v-100-000-rubley" target="_blank" rel="noopener">Главбух: с 1 октября бухгалтеры начали получать штрафы</a></li><li><a href="https://www.rnk.ru/news/226898-novye-shtrafy-za-oshibki-v-zarplatnyh-platezhkah-do-100-tys-rub" target="_blank" rel="noopener">РНК: новые штрафы за ошибки в зарплатных платёжках</a></li><li><a href="https://ppt.ru/news/zadolzhennost-bankrotstvo/s-1-sentyabrya-nachnut-shtrafovat-za-oshibki-v-zarplatnykh-platezhkakh" target="_blank" rel="noopener">ppt.ru: штрафы за ошибки в платёжках должникам</a></li></ul></div>
+<p>Вопрос спорный. В справочнике Гаранта сказано, что заранее нельзя сказать, сочтут ли ошибку в коде нарушением по этой статье: решение принимает суд с учётом всех обстоятельств. Банк при этом платёжку с пустым или неверным кодом исполняет — то есть ошибку вы сами не заметите.</p>
+<p><strong>Что сделать:</strong>
+1. Выпишите сотрудников, по которым приходили исполнительные листы или постановления приставов.
+2. Проверьте шаблон зарплатной платёжки в банке или бухгалтерской программе: заполняется ли код в поле 20 и сумма удержания в поле 24.
+3. Платите зарплату реестром через зарплатный проект — спросите у банка, как в реестре передаются код дохода и сумма удержания.</p></div>
+<div class="sources"><span class="label">Источники</span><ul><li><a href="https://base.garant.ru/58077809/" target="_blank" rel="noopener">Гарант: оформление платёжных поручений при выплате доходов физлицам (коды доходов)</a></li><li><a href="https://www.consultant.ru/law/podborki/shtraf_za_neukazanie_koda_dohoda/" target="_blank" rel="noopener">КонсультантПлюс: штраф за неуказание кода дохода — подборка</a></li><li><a href="https://www.glavbukh.ru/news/59239-s-1-oktyabrya-buhgaltery-nachali-poluchat-shtrafy-minimum-v-100-000-rubley" target="_blank" rel="noopener">Главбух: с 1 октября бухгалтеры начали получать штрафы</a></li><li><a href="https://www.rnk.ru/news/226898-novye-shtrafy-za-oshibki-v-zarplatnyh-platezhkah-do-100-tys-rub" target="_blank" rel="noopener">РНК: новые штрафы за ошибки в зарплатных платёжках</a></li><li><a href="https://ppt.ru/news/zadolzhennost-bankrotstvo/s-1-sentyabrya-nachnut-shtrafovat-za-oshibki-v-zarplatnykh-platezhkakh" target="_blank" rel="noopener">ppt.ru: штрафы за ошибки в платёжках должникам</a></li></ul></div>
 <div class="endcta"><aside class="subbox">
 <h3>Такие разборы — каждое утро</h3>
 <p>Каждое утро по будням — короткие новости в канале. По пятницам — письмо с главным за неделю и сроками.</p>
