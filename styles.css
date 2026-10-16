@@ -185,7 +185,7 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 
 /* Подвал */
 .foot{border-top:2px solid var(--ink);margin-inline:-16px;padding:32px 16px 14px;color:var(--muted);font-size:14px}
-.foot .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+.foot .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
 .foot a{display:inline-flex;align-items:center;gap:7px;color:var(--muted)}
 .foot b{font-family:var(--display);font-size:18px}
 .foot ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
@@ -253,3 +253,12 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .cover{display:block;width:100%;height:auto;margin:0 0 24px;border-radius:var(--r);border:1px solid var(--line)}
 .video-own video{display:block;width:100%;max-width:360px;aspect-ratio:9/16;margin:0 auto;background:var(--ink);border-radius:var(--r)}
 .video-own figcaption{text-align:center}
+/* Темы и «По теме» */
+.topics{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 20px;font:500 13px/1.3 var(--mono)}
+.topics>span{color:var(--muted)}
+.topics a{border:1px solid var(--line);border-radius:999px;padding:5px 11px;color:var(--ink);text-decoration:none;background:var(--surface)}
+.topics a:hover,.topics a[aria-current]{border-color:var(--ink)}
+.topics small{color:var(--muted);margin-left:2px}
+.related{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--r);padding:14px 18px;margin:28px 0 0;background:var(--surface)}
+.related .label{font:600 12px/1.3 var(--mono);color:var(--ink)}
+.related ul{margin:8px 0 0;padding-left:18px;display:grid;gap:6px}
