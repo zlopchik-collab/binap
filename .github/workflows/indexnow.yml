@@ -1,0 +1,54 @@
+# Копируется сборщиком (build.py) в репозиторий сайта как .github/workflows/indexnow.yml.
+# После каждой публикации сообщает Яндексу и Bing по протоколу IndexNow,
+# какие страницы появились или изменились. Не зависит от интерфейса Вебмастера.
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Отправить все страницы из sitemap.xml"
+        type: boolean
+        default: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Ждём, пока GitHub Pages выложит новую версию
+        run: sleep 120
+      - name: Отправляем адреса в IndexNow
+        env:
+          ALL: ${{ github.event_name == 'workflow_dispatch' && inputs.all }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, re, subprocess, urllib.request
+          host = open("CNAME").read().strip()
+          key = next(f[:-4] for f in os.listdir(".") if re.fullmatch(r"[0-9a-f]{32}\.txt", f))
+          base = f"https://{host}/"
+          if os.environ.get("ALL") == "true":
+              urls = re.findall(r"<loc>(.*?)</loc>", open("sitemap.xml").read())
+          else:
+              try:
+                  changed = subprocess.check_output(["git", "diff", "--name-only", "HEAD~1", "HEAD"], text=True).split()
+              except subprocess.CalledProcessError:
+                  changed = []
+              pages = [f for f in changed if f.endswith(".html") and f != "404.html"]
+              urls = [base if f == "index.html" else base + f for f in pages]
+          if not urls:
+              print("Изменённых страниц нет"); raise SystemExit
+          body = json.dumps({"host": host, "key": key, "keyLocation": f"{base}{key}.txt", "urlList": urls[:10000]}).encode()
+          print(len(urls), "адресов:", *urls[:20], sep="\n")
+          for ep in ["https://yandex.com/indexnow", "https://api.indexnow.org/indexnow"]:
+              req = urllib.request.Request(ep, data=body, headers={"Content-Type": "application/json; charset=utf-8"})
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      print(ep, r.status)
+              except urllib.error.HTTPError as e:
+                  print(ep, e.code, e.read()[:300])
+          EOF
