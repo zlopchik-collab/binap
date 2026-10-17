@@ -38,8 +38,13 @@ jobs:
                   changed = subprocess.check_output(["git", "diff", "--name-only", "HEAD~1", "HEAD"], text=True).split()
               except subprocess.CalledProcessError:
                   changed = []
+              # Отправляем только то, что действительно новое или обновлённое: lastmod в sitemap за последние 2 дня.
+              # Остальные страницы меняются мелко (блоки «По теме», «Читать дальше») — их не шлём, чтобы не шуметь.
+              import datetime
+              sm = dict((u, d) for u, d in re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", open("sitemap.xml").read()))
+              fresh = str(datetime.date.today() - datetime.timedelta(days=2))
               pages = [f for f in changed if f.endswith(".html") and f != "404.html"]
-              urls = [base if f == "index.html" else base + f for f in pages]
+              urls = [u for u in (base if f == "index.html" else base + f for f in pages) if sm.get(u, "") >= fresh]
           if not urls:
               print("Изменённых страниц нет"); raise SystemExit
           body = json.dumps({"host": host, "key": key, "keyLocation": f"{base}{key}.txt", "urlList": urls[:10000]}).encode()
