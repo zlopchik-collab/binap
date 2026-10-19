@@ -9,7 +9,7 @@ window.SITE_CONFIG = {
   LINKS: {
     max:  "https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws",
     vk:   "https://vk.com/binapru",
-    dzen: "",
+    dzen: "https://dzen.ru/binapru",
     tg:   "https://t.me/binapru",
     vc:   ""
   },
