@@ -10,7 +10,9 @@
   /* Ссылки на каналы */
   $$('[data-link]').forEach(function(a){
     var u = L[a.getAttribute('data-link')];
-    if(u){ a.href = u; a.target = '_blank'; a.rel = 'noopener'; }
+    var real = /^https?:/.test(a.getAttribute('href') || '');   // сборщик уже вписал настоящую ссылку — не трогаем
+    if(u){ a.href = u; }
+    if(u || real){ a.target = '_blank'; a.rel = 'noopener'; }
     else { a.href = (document.body.getAttribute('data-root')||'') + 'podpiska.html'; a.title = 'Канал скоро появится'; }
   });
 
