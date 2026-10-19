@@ -27,7 +27,8 @@ window.SITE_CONFIG = {
   // advertiser и erid — для маркировки рекламы (обязательно).
   OFFERS: {
     rko: { url: "", label: "сравнить тарифы и открыть счёт", advertiser: "", erid: "" },
-    reg: { url: "", label: "зарегистрировать ИП через банк",  advertiser: "", erid: "" }
+    reg: { url: "", label: "зарегистрировать ИП через банк",  advertiser: "", erid: "" },
+    ai:  { url: "", label: "попробовать нейросеть для бизнеса", advertiser: "", erid: "" }
   },
 
   // Ближайшие сроки для ИП на главной. Обновляйте раз в неделю.
