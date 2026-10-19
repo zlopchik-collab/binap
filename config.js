@@ -28,7 +28,11 @@ window.SITE_CONFIG = {
   OFFERS: {
     rko: { url: "", label: "сравнить тарифы и открыть счёт", advertiser: "", erid: "" },
     reg: { url: "", label: "зарегистрировать ИП через банк",  advertiser: "", erid: "" },
-    ai:  { url: "", label: "попробовать нейросеть для бизнеса", advertiser: "", erid: "" }
+    ai:  { url: "", label: "попробовать нейросеть для бизнеса", advertiser: "", erid: "" },
+    buh: { url: "", label: "подключить онлайн-бухгалтерию", advertiser: "", erid: "" },
+    ekv: { url: "", label: "сравнить тарифы эквайринга", advertiser: "", erid: "" },
+    ins: { url: "", label: "оформить страховку для бизнеса", advertiser: "", erid: "" },
+    saas:{ url: "", label: "попробовать сервис для бизнеса", advertiser: "", erid: "" }
   },
 
   // Ближайшие сроки для ИП на главной. Обновляйте раз в неделю.
