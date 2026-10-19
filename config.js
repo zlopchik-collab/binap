@@ -10,7 +10,7 @@ window.SITE_CONFIG = {
     max:  "https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws",
     vk:   "",
     dzen: "",
-    tg:   "",
+    tg:   "https://t.me/binapru",
     vc:   ""
   },
 
