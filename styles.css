@@ -20,6 +20,9 @@
   --line-tool:#7A3B96;    /* 8. Калининская — фиолетовая → «Инструмент недели» */
   --line-column:#B08A00;  /* 8А. Солнцевская — жёлтая, затемнена для контраста → «Колонка» */
   --line-ai:#0F8077;      /* 11. Большая кольцевая — бирюзовая, затемнена для контраста → «ИИ для бизнеса» */
+  --line-sales:#B0306A;   /* 15. Люблинско-Дмитровская — салатовая заменена малиновой для отличия от зелёной → «Продажи и маркетинг» */
+  --line-market:#8A5A2B;  /* 5. Кольцевая — коричневая → «Обзор рынка» */
+  --line-invest:#4B3FB0;  /* 14. МЦК — индиго → «Инвестиции и финансирование» */
 
   --display:"Alegreya","PT Serif",Georgia,serif;
   --body:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -34,6 +37,7 @@
     --warn:#E8A94B; --warn-soft:#2E2210;
     --line-change:#E8573F; --line-count:#4FBE6E; --line-howto:#5B9EE0;
     --line-mistake:#E8954D; --line-tool:#AD7BC4; --line-column:#E0C34A; --line-ai:#3FC1B6;
+    --line-sales:#EB7FB0; --line-market:#D4A373; --line-invest:#9C93F0;
   }
 }
 :root[data-theme="dark"]{
@@ -43,6 +47,7 @@
   --warn:#E8A94B; --warn-soft:#2E2210;
   --line-change:#E8573F; --line-count:#4FBE6E; --line-howto:#5B9EE0;
   --line-mistake:#E8954D; --line-tool:#AD7BC4; --line-column:#E0C34A; --line-ai:#3FC1B6;
+    --line-sales:#EB7FB0; --line-market:#D4A373; --line-invest:#9C93F0;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -64,11 +69,13 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .dot-change{background:var(--line-change)} .dot-count{background:var(--line-count)}
 .dot-howto{background:var(--line-howto)} .dot-mistake{background:var(--line-mistake)}
 .dot-tool{background:var(--line-tool)} .dot-column{background:var(--line-column)} .dot-ai{background:var(--line-ai)}
+.dot-sales{background:var(--line-sales)} .dot-market{background:var(--line-market)} .dot-invest{background:var(--line-invest)}
 .tag{display:inline-flex;align-items:center;gap:7px;font:600 13px/1.3 var(--mono);color:var(--ink)}
 .tag i{display:block;width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .tag-change i{background:var(--line-change)} .tag-count i{background:var(--line-count)}
 .tag-howto i{background:var(--line-howto)} .tag-mistake i{background:var(--line-mistake)}
 .tag-tool i{background:var(--line-tool)} .tag-column i{background:var(--line-column)} .tag-ai i{background:var(--line-ai)}
+.tag-sales i{background:var(--line-sales)} .tag-market i{background:var(--line-market)} .tag-invest i{background:var(--line-invest)}
 
 /* Шапка */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:2px solid var(--ink);margin-inline:-16px;padding-inline:16px}
@@ -127,6 +134,7 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .card-change{border-top-color:var(--line-change)} .card-count{border-top-color:var(--line-count)}
 .card-howto{border-top-color:var(--line-howto)} .card-mistake{border-top-color:var(--line-mistake)}
 .card-tool{border-top-color:var(--line-tool)} .card-column{border-top-color:var(--line-column)} .card-ai{border-top-color:var(--line-ai)}
+.card-sales{border-top-color:var(--line-sales)} .card-market{border-top-color:var(--line-market)} .card-invest{border-top-color:var(--line-invest)}
 .card:hover{border-color:var(--ink)}
 .card h3{font-size:18px;line-height:1.3}
 .card p{margin:0;color:var(--muted);font-size:15px}
