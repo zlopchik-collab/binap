@@ -1,7 +1,7 @@
 {
  "name": "Бизнес на пальцах",
  "short_name": "На пальцах",
- "start_url": "/index.html",
+ "start_url": "/",
  "display": "standalone",
  "background_color": "#FAF8F3",
  "theme_color": "#C62A1E",
