@@ -1,3 +1,15 @@
+/* Шрифты с самого сайта (fonts/, SIL OFL), без Google Fonts */
+@font-face{font-family:"Alegreya";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/alegreya-500.woff2) format("woff2")}
+@font-face{font-family:"Alegreya";font-style:italic;font-weight:600;font-display:swap;src:url(fonts/alegreya-600-italic.woff2) format("woff2")}
+@font-face{font-family:"Alegreya";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/alegreya-700.woff2) format("woff2")}
+@font-face{font-family:"Alegreya";font-style:normal;font-weight:800;font-display:swap;src:url(fonts/alegreya-800.woff2) format("woff2")}
+@font-face{font-family:"Alegreya";font-style:normal;font-weight:900;font-display:swap;src:url(fonts/alegreya-900.woff2) format("woff2")}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/golos-400.woff2) format("woff2")}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/golos-500.woff2) format("woff2")}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/golos-600.woff2) format("woff2")}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/golos-700.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/jetbrains-mono-500.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/jetbrains-mono-600.woff2) format("woff2")}
 /* =====================================================================
    Дизайн-система «Бизнес на пальцах».
    Шрифт — Alegreya (заголовки, с характером, как у исторических гарнитур
