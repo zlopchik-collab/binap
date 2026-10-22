@@ -1,0 +1,35 @@
+# Копируется сборщиком (build.py) в репозиторий сайта как .github/workflows/deploy-yc.yml.
+# После каждой публикации загружает сайт в бакет Yandex Object Storage (хранение в России).
+# Пока в настройках репозитория нет секретов YC_KEY_ID и YC_SECRET — шаг пропускается,
+# сайт продолжает работать на GitHub Pages.
+name: Yandex Object Storage
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      YC_KEY_ID: ${{ secrets.YC_KEY_ID }}
+      YC_SECRET: ${{ secrets.YC_SECRET }}
+      BUCKET: ${{ vars.YC_BUCKET || 'binap.ru' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Загружаем сайт в бакет
+        if: env.YC_KEY_ID != '' && env.YC_SECRET != ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.YC_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET }}
+          AWS_DEFAULT_REGION: ru-central1
+        run: |
+          EP=https://storage.yandexcloud.net
+          EXCL=(--exclude ".git/*" --exclude ".github/*" --exclude "CNAME" --exclude "README.md")
+          # HTML — короткий кэш, чтобы новые статьи появлялись сразу; остальное — подольше
+          aws s3 sync . "s3://$BUCKET" --endpoint-url $EP --delete "${EXCL[@]}" --exclude "*.html" --exclude "*.xml" --exclude "*.txt" --cache-control "public, max-age=86400"
+          aws s3 sync . "s3://$BUCKET" --endpoint-url $EP "${EXCL[@]}" --exclude "*" --include "*.html" --include "*.xml" --include "*.txt" --cache-control "public, max-age=300"
+      - name: Секретов нет — пропускаем
+        if: env.YC_KEY_ID == '' || env.YC_SECRET == ''
+        run: echo "YC_KEY_ID / YC_SECRET не заданы — сайт остаётся только на GitHub Pages."
