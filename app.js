@@ -127,7 +127,7 @@
       var D = num('c-inc'), R = num('c-exp'), rd = num('c-rd')/100, rr = num('c-rr')/100;
       var staff = document.getElementById('c-staff').value === 'yes';
       var fixed = num('c-fix');
-      var V = fixed + Math.max(0, D-300000)*0.01;
+      var V = fixed + Math.min(Math.max(0, D-300000)*0.01, 321818);
       var taxD = D*rd, cut = staff ? Math.min(V, taxD*0.5) : Math.min(V, taxD);
       var outD = Math.max(0, taxD-cut);
       var base = Math.max(0, D-R-V), outR = Math.max(base*rr, D*0.01);
@@ -146,4 +146,41 @@
     $$('#calc input, #calc select').forEach(function(i){ i.addEventListener('input', run); });
     run();
   }
+  /* Калькулятор взносов ИП */
+  var cv = document.getElementById('calc-v');
+  if(cv){
+    var Y = {2026:{fix:57390, cap:321818}, 2027:{fix:61154, cap:342923}};
+    var fmtv = function(n){ return (Math.round(n*100)/100).toLocaleString('ru-RU', {maximumFractionDigits:2}) + ' ₽'; };
+    var val = function(id){ var v = String(document.getElementById(id).value).replace(/\s/g,'').replace(',','.'); return +v || 0; };
+    function runv(){
+      var y = +document.getElementById('v-year').value, mode = document.getElementById('v-mode').value;
+      var inc = val('v-inc'), exp = val('v-exp');
+      document.getElementById('v-exp-f').hidden = !(mode === 'dr' || mode === 'osno');
+      document.getElementById('v-exp-l').textContent = mode === 'osno' ? 'Профессиональные вычеты (расходы), ₽' : 'Расходы за год, ₽';
+      document.getElementById('v-inc-l').textContent = mode === 'psn' ? 'Потенциальный доход по патенту за год, ₽' : 'Доход за год, ₽';
+      var share = 1, reg = document.getElementById('v-reg').value;
+      if(reg){
+        var d = new Date(reg + 'T00:00:00');
+        if(d.getFullYear() === y){
+          var m = d.getMonth(), dim = new Date(y, m+1, 0).getDate();
+          share = ((11 - m) + (dim - d.getDate() + 1)/dim) / 12;
+        } else if(d.getFullYear() > y){ share = 0; }
+      }
+      var fix = 0, one = 0;
+      if(mode !== 'ausn'){
+        fix = Math.round(Y[y].fix * share * 100) / 100;
+        var base = (mode === 'dr' || mode === 'osno') ? Math.max(0, inc - exp) : inc;
+        one = Math.min(Math.max(0, base - 300000) * 0.01, Y[y].cap);
+      }
+      document.getElementById('v-fix').textContent = fmtv(fix);
+      document.getElementById('v-one').textContent = fmtv(one);
+      document.getElementById('v-all').textContent = fmtv(fix + one);
+      document.getElementById('v-when').textContent = mode === 'ausn'
+        ? 'На АУСН взносы за себя не платят.'
+        : 'Фиксированные — до 28 декабря ' + y + ' года' + (one > 0 ? ', 1% — до 1 июля ' + (y+1) + ' года.' : '. 1% платить не нужно: доход не больше 300 000 ₽.') + (share < 1 ? ' Фиксированные уменьшены пропорционально дате регистрации.' : '');
+    }
+    $$('#calc-v input, #calc-v select').forEach(function(i){ i.addEventListener('input', runv); i.addEventListener('change', runv); });
+    runv();
+  }
+
 })();
