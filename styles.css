@@ -289,3 +289,7 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .prose blockquote p{margin:0}
 .prose blockquote p+p{margin-top:8px}
 .rub-ii-dlya-biznesa .prose blockquote::before{content:"Запрос";display:block;margin-bottom:6px;font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--line-ai)}
+/* Блок «Коротко» — прямой ответ в начале статьи (для читателей, поиска и нейросетей) */
+.tldr{margin:18px 0 6px;padding:14px 18px;border-left:4px solid var(--accent);background:var(--surface);border-radius:var(--r)}
+.tldr p{margin:6px 0 0;font-size:16px;line-height:1.5}
+.tldr .label{display:block}
