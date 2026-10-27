@@ -293,3 +293,5 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .tldr{margin:18px 0 6px;padding:14px 18px;border-left:4px solid var(--accent);background:var(--surface);border-radius:var(--r)}
 .tldr p{margin:6px 0 0;font-size:16px;line-height:1.5}
 .tldr .label{display:block}
+.incta{margin:14px 0;padding:10px 14px;border:1px dashed var(--line);border-radius:var(--r);font-size:15px;line-height:1.5;color:var(--muted)}
+.incta a{color:var(--accent);font-weight:600}
