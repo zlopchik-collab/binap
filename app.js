@@ -44,7 +44,11 @@
         m.textContent = 'Реклама. ' + (o.advertiser||'') + (o.erid ? ', erid: ' + o.erid : '');
         a.parentNode.insertBefore(m, a.nextSibling);
       }
-    } else { a.className += ' pending'; a.textContent = 'ссылка появится скоро'; a.removeAttribute('href'); }
+    } else {
+      // Оффера пока нет: короткий абзац с партнёрской ссылкой прячем целиком, в длинном убираем только ссылку
+      var p = a.closest('p, li');
+      if(p && p.textContent.length < 160) p.style.display = 'none'; else a.remove();
+    }
   });
 
   /* Подсказки на графиках: наведение мышью или касание */
