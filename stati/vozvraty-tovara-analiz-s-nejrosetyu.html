@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Возвраты товара: как найти причины с помощью нейросети</title>
+<meta name="description" content="Как с помощью нейросети разобрать причины возвратов за месяц, найти самые дорогие и что поменять в карточке, упаковке и описании. Запрос и таблица для расчёта.">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://binap.ru/stati/vozvraty-tovara-analiz-s-nejrosetyu.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Возвраты товара: как найти причины с помощью нейросети">
+<meta property="og:description" content="Как с помощью нейросети разобрать причины возвратов за месяц, найти самые дорогие и что поменять в карточке, упаковке и описании. Запрос и таблица для расчёта.">
+<meta property="og:url" content="https://binap.ru/stati/vozvraty-tovara-analiz-s-nejrosetyu.html">
+<meta property="og:image" content="https://binap.ru/img/cover/vozvraty-tovara-analiz-s-nejrosetyu.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="Бизнес на пальцах">
+<meta name="theme-color" content="#C62A1E">
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../img/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<link rel="preload" href="/fonts/golos-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/alegreya-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css?v=a3a5ead2">
+<link rel="alternate" type="application/rss+xml" title="Бизнес на пальцах" href="https://binap.ru/rss.xml">
+<meta name="yandex-verification" content="cae5fc593e7783f6"><meta name="google-site-verification" content="TMnb9N52iccsxqx5o-jf5Vjg5QQppQeJsycJJm8BrVA"><meta name="msvalidate.01" content="FB223D7640AF298BA7629EFA5745A460">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Возвраты товара: как найти причины с помощью нейросети", "description": "Как с помощью нейросети разобрать причины возвратов за месяц, найти самые дорогие и что поменять в карточке, упаковке и описании. Запрос и таблица для расчёта.", "datePublished": "2026-10-30", "dateModified": "2026-10-30", "author": {"@type": "Person", "name": "Дмитрий Бочкарев", "jobTitle": "Главный редактор", "url": "https://binap.ru/o-proekte.html", "sameAs": ["https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws", "https://vk.com/binapru", "https://dzen.ru/binapru", "https://t.me/binapru"]}, "abstract": "Как с помощью нейросети разобрать причины возвратов за месяц, найти самые дорогие и что поменять в карточке, упаковке и описании. Запрос и таблица для расчёта.", "keywords": "Маркетплейсы и селлеры, Продажи и маркетинг", "publisher": {"@type": "Organization", "name": "Бизнес на пальцах", "logo": {"@type": "ImageObject", "url": "https://binap.ru/img/icon-512.png"}}, "mainEntityOfPage": "https://binap.ru/stati/vozvraty-tovara-analiz-s-nejrosetyu.html", "inLanguage": "ru", "image": "https://binap.ru/img/cover/vozvraty-tovara-analiz-s-nejrosetyu.png", "articleSection": "ИИ для бизнеса"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://binap.ru/"}, {"@type": "ListItem", "position": 2, "name": "ИИ для бизнеса", "item": "https://binap.ru/rubrika/ii-dlya-biznesa.html"}, {"@type": "ListItem", "position": 3, "name": "Возвраты товара: как найти причины с помощью нейросети"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Какую долю возвратов считать нормальной?", "acceptedAnswer": {"@type": "Answer", "text": "Единой нормы нет: она сильно зависит от категории товара. Сравнивайте себя с собой — месяц к месяцу."}}, {"@type": "Question", "name": "Можно ли загружать в нейросеть отчёт маркетплейса целиком?", "acceptedAnswer": {"@type": "Answer", "text": "Лучше убрать из него персональные данные покупателей и коммерческие условия, оставить только товар, причину и сумму."}}, {"@type": "Question", "name": "Нейросеть посчитает убытки сама?", "acceptedAnswer": {"@type": "Answer", "text": "Может, но проверяйте: в арифметике модели ошибаются. Итоговые суммы считайте в таблице."}}]}</script>
+<script>var _tmr=window._tmr||(window._tmr=[]);_tmr.push({id:"3803175",type:"pageView",start:(new Date()).getTime()});(function(d,w,id){if(d.getElementById(id))return;var ts=d.createElement("script");ts.type="text/javascript";ts.async=true;ts.id=id;ts.src="https://top-fwz1.mail.ru/js/code.js";var f=function(){var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(ts,s);};if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",f,false);}else{f();}})(document,window,"tmr-code");</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3803175;js=na" style="position:absolute;left:-9999px" alt=""></div></noscript>
+</head><body class="is-article rub-ii-dlya-biznesa" data-root="../">
+<header class="top"><div class="wrap">
+<a class="brand" href="../"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="var(--accent)"/><g stroke="var(--accent-ink)" stroke-width="3" stroke-linecap="round"><path d="M11 11v18M17 11v18M23 11v18M29 11v18"/><path d="M8 25L32 14"/></g></svg><b>Бизнес на пальцах</b></a>
+<nav class="nav" aria-label="Рубрики"><a href="../rubrika/chto-pomenyalos.html"><span class="dot dot-change"></span>Что поменялось</a><a href="../rubrika/posschitali.html"><span class="dot dot-count"></span>Посчитали</a><a href="../rubrika/kak-sdelat.html"><span class="dot dot-howto"></span>Как сделать</a><a href="../rubrika/razbor-oshibki.html"><span class="dot dot-mistake"></span>Разбор ошибки</a><a href="../rubrika/instrument.html"><span class="dot dot-tool"></span>Инструмент недели</a><a href="../rubrika/kolonka.html"><span class="dot dot-column"></span>Колонка редактора</a><a href="../rubrika/prodazhi.html"><span class="dot dot-sales"></span>Продажи и маркетинг</a><a href="../rubrika/obzor-rynka.html"><span class="dot dot-market"></span>Обзор рынка</a><a href="../rubrika/investicii.html"><span class="dot dot-invest"></span>Инвестиции и финансирование</a><a href="../rubrika/ii-dlya-biznesa.html" aria-current=page><span class="dot dot-ai"></span>ИИ для бизнеса</a><a href="../kalkulator-usn.html">Калькулятор УСН</a></nav>
+<a class="btn small" href="../podpiska.html">Подписаться</a>
+</div></header>
+<nav class="subnav" aria-label="Рубрики"><a href="../rubrika/chto-pomenyalos.html"><span class="dot dot-change"></span>Что поменялось</a><a href="../rubrika/posschitali.html"><span class="dot dot-count"></span>Посчитали</a><a href="../rubrika/kak-sdelat.html"><span class="dot dot-howto"></span>Как сделать</a><a href="../rubrika/razbor-oshibki.html"><span class="dot dot-mistake"></span>Разбор ошибки</a><a href="../rubrika/instrument.html"><span class="dot dot-tool"></span>Инструмент недели</a><a href="../rubrika/kolonka.html"><span class="dot dot-column"></span>Колонка редактора</a><a href="../rubrika/prodazhi.html"><span class="dot dot-sales"></span>Продажи и маркетинг</a><a href="../rubrika/obzor-rynka.html"><span class="dot dot-market"></span>Обзор рынка</a><a href="../rubrika/investicii.html"><span class="dot dot-invest"></span>Инвестиции и финансирование</a><a href="../rubrika/ii-dlya-biznesa.html" aria-current=page><span class="dot dot-ai"></span>ИИ для бизнеса</a><a href="../kalkulator-usn.html">Калькулятор УСН</a></nav>
+<main>
+<article class="article">
+<div class="crumbs"><a href="../">Главная</a><span>/</span><a href="../rubrika/ii-dlya-biznesa.html">ИИ для бизнеса</a></div>
+<h1>Возвраты товара: как найти причины с помощью нейросети</h1>
+<div class="meta"><span>Опубликовано <time datetime="2026-10-30">30 октября 2026</time></span><span>Дмитрий Бочкарев</span><span>3 мин чтения</span></div>
+<img class="cover" src="../img/cover/vozvraty-tovara-analiz-s-nejrosetyu.png" width="1200" height="630" alt="Возвраты товара: как найти причины с помощью нейросети">
+<div class="topics"><span>Темы:</span><a href="../tema/marketplejsy.html">Маркетплейсы</a><a href="../tema/prodazhi-marketing.html">Продажи и маркетинг</a></div>
+
+<div class="prose"><p>Возвраты съедают маржу незаметно: обратная логистика, упаковка, товар, который уже не продать как новый. Нейросеть за пару минут сгруппирует причины возвратов за месяц и покажет, какие из них самые дорогие. Решения — что поменять в карточке, упаковке или описании — остаются за вами.</p>
+<p><strong>Коротко</strong></p>
+<ul>
+<li>Выгрузите причины возвратов за месяц из кабинета маркетплейса или CRM — без имён и телефонов покупателей.</li>
+<li>Попросите нейросеть сгруппировать причины и предложить по одному действию на каждую из трёх самых дорогих.</li>
+<li>Посчитайте стоимость возвратов сами: нейросеть может ошибиться в цифрах.</li>
+<li>Возвратов может стать больше: законопроект о возврате качественного товара любым способом, в том числе через ПВЗ маркетплейса, принят в первом чтении (по данным КонсультантПлюс).</li>
+</ul><p class="incta">Сроки, изменения и разборы для ИП и самозанятых — каждое утро в <a href="https://t.me/binapru" target="_blank" rel="noopener">Telegram</a> и <a href="https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws" target="_blank" rel="noopener">MAX</a>. Подпишитесь, чтобы не пропустить.</p>
+<h2>Шаг 1. Соберите данные</h2>
+<p>Из кабинета продавца или своей учётной системы выгрузите за месяц: товар, причину возврата со слов покупателя, комментарий, сумму. Удалите имена, телефоны и адреса — это персональные данные по закону № 152-ФЗ, нейросети они не нужны.</p>
+<h2>Шаг 2. Запрос</h2>
+<blockquote>
+<p>Ты — аналитик небольшого интернет-магазина. Ниже список причин возвратов за [месяц] без персональных данных. Сгруппируй причины по 5–7 категориям, посчитай долю каждой, назови три самые дорогие для меня и предложи по одному действию на каждую: что поменять в карточке товара, упаковке или описании. Выведи таблицу и короткий вывод. Если причина непонятна — отнеси её в категорию «нет данных», не додумывай. Данные: [список]</p>
+</blockquote>
+<h2>Шаг 3. Посчитайте стоимость возвратов сами</h2>
+<p><strong>Расчёт редакции:</strong> за месяц 40 возвратов, средняя стоимость обратной логистики и переупаковки — 250 ₽, ещё 10 товаров уже не продать как новые по 1 200 ₽ себестоимости.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Статья</th>
+<th>Сумма</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Логистика и переупаковка: 40 × 250 ₽</td>
+<td>10 000 ₽</td>
+</tr>
+<tr>
+<td>Потерянный товар: 10 × 1 200 ₽</td>
+<td>12 000 ₽</td>
+</tr>
+<tr>
+<td><strong>Итого за месяц</strong></td>
+<td><strong>22 000 ₽</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Если половина возвратов — из-за неверного размера в описании, исправление карточки экономит около 11 000 ₽ в месяц.</p>
+<h2>Шаг 4. Что обычно меняют</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Частая причина</th>
+<th>Что поменять</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«Не подошёл размер»</td>
+<td>таблица размеров с замерами, а не только «S/M/L»</td>
+</tr>
+<tr>
+<td>«Не соответствует фото»</td>
+<td>реальные фото, цвет при дневном свете</td>
+</tr>
+<tr>
+<td>«Пришёл повреждённым»</td>
+<td>упаковка, маркировка «хрупкое»</td>
+</tr>
+<tr>
+<td>«Ожидал другого»</td>
+<td>описание: что входит в комплект, чего нет</td>
+</tr>
+<tr>
+<td>«Долгая доставка»</td>
+<td>склад ближе к покупателю, честный срок в карточке</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Если возвратов станет больше</h2>
+<p>По данным КонсультантПлюс, Госдума 29 октября 2026 года приняла в первом чтении законопроект: покупатель сможет вернуть качественный товар, купленный дистанционно, любым способом и за свой счёт, а если товар доставил маркетплейс — через его пункт выдачи. Закон ещё не принят. Если его примут, разбор причин возвратов станет ещё важнее — каждый лишний возврат проще оформить. Как снизить потери, когда маркетплейс теряет товар, — в статье <a href="strahovanie-tovara-i-imushchestva-malyj-biznes.html">страхование товара и имущества</a>.</p>
+<h2>Как встроить в работу</h2>
+<ol>
+<li>Раз в месяц выгружайте причины возвратов и прогоняйте их через запрос.</li>
+<li>Меняйте за раз одну вещь — описание, фото или упаковку — и сравнивайте долю возвратов через месяц.</li>
+<li>Отвечайте на отзывы о возвратах спокойно и по фактам — запросы для этого в статье <a href="otvety-na-otzyvy-s-nejrosetyu-shablony.html">ответы на отзывы с нейросетью</a>.</li>
+</ol>
+<p><strong>Частые вопросы</strong></p>
+<p><strong>Какую долю возвратов считать нормальной?</strong> Единой нормы нет: она сильно зависит от категории товара. Сравнивайте себя с собой — месяц к месяцу.</p>
+<p><strong>Можно ли загружать в нейросеть отчёт маркетплейса целиком?</strong> Лучше убрать из него персональные данные покупателей и коммерческие условия, оставить только товар, причину и сумму.</p>
+<p><strong>Нейросеть посчитает убытки сама?</strong> Может, но проверяйте: в арифметике модели ошибаются. Итоговые суммы считайте в таблице.</p></div>
+<aside class="related"><span class="label">По теме</span><ul><li><a href="otvety-na-otzyvy-s-nejrosetyu-shablony.html">Ответы на отзывы с нейросетью: запросы для карт и маркетплейсов</a></li><li><a href="strahovanie-tovara-i-imushchestva-malyj-biznes.html">Страхование товара и имущества для малого бизнеса: когда нужно</a></li><li><a href="skript-pervogo-zvonka-struktura-oshibki.html">Скрипт первого звонка для малого бизнеса: структура и 5 ошибок</a></li><li><a href="pvz-ekonomika-ozon-plata-wildberries.html">ПВЗ в 2026 году: плата Ozon и на чём зарабатывает владелец</a></li></ul></aside>
+<div class="sources"><span class="label">Источники</span><ul><li><a href="https://www.consultant.ru/legalnews/32966/" target="_blank" rel="noopener">КонсультантПлюс: законопроект о возврате качественного товара, купленного дистанционно, принят в первом чтении, 29.10.2026</a></li></ul></div>
+<div class="endcta"><aside class="subbox">
+<h3>Такие разборы — каждое утро</h3>
+<p>Каждое утро по будням — короткие новости в канале. В VK — с картинками, в Дзене — длинные разборы и чек-листы.</p>
+<div class="channels">
+<a class="btn" data-link="max" href="https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws" rel="noopener">Канал в MAX</a>
+<a class="btn ghost" data-link="vk" href="https://vk.com/binapru" rel="noopener">VK</a>
+<a class="btn ghost" data-link="dzen" href="https://dzen.ru/binapru" rel="noopener">Дзен</a>
+<a class="btn ghost" data-link="tg" href="https://t.me/binapru" rel="noopener">Telegram</a>
+</div>
+
+<button class="btn ghost" data-push type="button" hidden>Включить уведомления о новых статьях</button>
+</aside></div>
+</article>
+<section class="next"><div class="section-head"><h2>Читать дальше</h2></div><div class="cards"><a class="card card-ai" href="../stati/ii-dlya-malogo-biznesa-10-zadach.html"><span class="tag tag-ai"><i></i>ИИ для бизнеса</span><h3>ИИ для малого бизнеса: 10 задач, которые можно отдать нейросети</h3><p>Какую рутину ИП и небольшой компании уже закрывает нейросеть: ответы клиентам, тексты, таблицы, договоры. Готовые запросы и что ИИ доверять нельзя.</p><div class="todo"><b>Сделать</b><span>Выбрать одну задачу из списка и отдать её нейросети на этой неделе</span></div></a><a class="card card-change" href="../stati/cb-kontrol-nalichnyh-ip-ooo-bez-poroga.html"><span class="tag tag-change"><i></i>Что поменялось</span><h3>Банки проверяют любые наличные ИП и ООО: порог 30 млн ₽ убрали</h3><p>ЦБ обновил рекомендации: банки проверяют происхождение наличных у ИП и ООО независимо от суммы. Что это значит и какие документы держать под рукой.</p><div class="todo"><b>Сделать</b><span>Собрать документы-подтверждения по крупным операциям с наличными</span></div></a></div></section>
+</main>
+<div class="modal-bg" id="modal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-t">
+<button class="close" type="button" aria-label="Закрыть">×</button>
+<span class="label">Не пропустите следующее изменение</span>
+<h3 id="m-t">Новости для ИП каждое утро — за 3 минуты</h3>
+<p class="muted" style="margin:0">Налоги, банки, штрафы и сроки. Только то, что касается ваших денег, и что с этим сделать.</p>
+<div class="channels">
+<a class="btn" data-link="max" href="https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws" rel="noopener">Канал в MAX</a>
+<a class="btn ghost" data-link="vk" href="https://vk.com/binapru" rel="noopener">VK</a>
+<a class="btn ghost" data-link="dzen" href="https://dzen.ru/binapru" rel="noopener">Дзен</a>
+<a class="btn ghost" data-link="tg" href="https://t.me/binapru" rel="noopener">Telegram</a>
+</div>
+
+</div></div>
+<footer class="foot"><div class="wrap">
+<div><b style="color:var(--ink)">Бизнес на пальцах</b><p>Независимое медиа для ИП и небольших компаний. Главный редактор — Дмитрий Бочкарев.</p>
+<p>Материалы носят справочный характер и не заменяют консультацию бухгалтера или юриста. Партнёрские ссылки помечены как реклама.</p></div>
+<div><span class="label">Рубрики</span><ul><li><a href="../rubrika/chto-pomenyalos.html"><span class="dot dot-change"></span>Что поменялось</a></li><li><a href="../rubrika/posschitali.html"><span class="dot dot-count"></span>Посчитали</a></li><li><a href="../rubrika/kak-sdelat.html"><span class="dot dot-howto"></span>Как сделать</a></li><li><a href="../rubrika/razbor-oshibki.html"><span class="dot dot-mistake"></span>Разбор ошибки</a></li><li><a href="../rubrika/instrument.html"><span class="dot dot-tool"></span>Инструмент недели</a></li><li><a href="../rubrika/kolonka.html"><span class="dot dot-column"></span>Колонка редактора</a></li><li><a href="../rubrika/prodazhi.html"><span class="dot dot-sales"></span>Продажи и маркетинг</a></li><li><a href="../rubrika/obzor-rynka.html"><span class="dot dot-market"></span>Обзор рынка</a></li><li><a href="../rubrika/investicii.html"><span class="dot dot-invest"></span>Инвестиции и финансирование</a></li><li><a href="../rubrika/ii-dlya-biznesa.html"><span class="dot dot-ai"></span>ИИ для бизнеса</a></li></ul></div>
+<div><span class="label">Темы</span><ul><li><a href="../tema/usn.html">УСН</a></li><li><a href="../tema/nds.html">НДС</a></li><li><a href="../tema/vznosy-enp.html">Взносы и ЕНП</a></li><li><a href="../tema/patent-ausn.html">Патент и АУСН</a></li><li><a href="../tema/markirovka.html">Маркировка</a></li><li><a href="../tema/marketplejsy.html">Маркетплейсы</a></li><li><a href="../tema/shtrafy-proverki.html">Штрафы и проверки</a></li><li><a href="../tema/banki.html">Банки и счета</a></li><li><a href="../tema/samozanyatye.html">Самозанятые</a></li><li><a href="../tema/ved-import.html">Импорт и ВЭД</a></li><li><a href="../tema/otkrytie-biznesa.html">Открытие бизнеса</a></li><li><a href="../tema/kadry.html">Кадры и зарплата</a></li><li><a href="../tema/ekvajring.html">Эквайринг и кассы</a></li><li><a href="../tema/strahovanie.html">Страхование</a></li><li><a href="../tema/prodazhi-marketing.html">Продажи и маркетинг</a></li></ul></div>
+<div><span class="label">Проект</span><ul>
+<li><a href="../podpiska.html">Подписка</a></li><li><a href="../kalkulator-usn.html">Калькулятор УСН</a></li><li><a href="../kalkulator-vznosov-ip.html">Калькулятор взносов ИП</a></li>
+<li><a href="../o-proekte.html">О проекте и реклама</a></li><li><a href="../politika.html">Политика обработки данных</a></li><li><a href="../rss.xml">RSS-лента</a></li></ul></div>
+</div></footer>
+<div class="stick" id="stick"><span>Новости для ИП каждое утро</span><a class="btn small" data-link="max" href="https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws" rel="noopener">Читать в MAX</a><a class="btn small ghost" href="../podpiska.html">Все способы</a><button class="x" type="button" aria-label="Скрыть">×</button></div>
+<script src="../config.js?v=82283a23"></script>
+<script src="../app.js?v=dc10c1fb"></script>
+</body></html>
