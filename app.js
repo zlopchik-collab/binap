@@ -37,7 +37,7 @@
   /* Партнёрские ссылки с маркировкой */
   $$('a.offer').forEach(function(a){
     var o = (C.OFFERS||{})[a.getAttribute('data-offer')];
-    if(o && o.url){
+    if(o && o.url && o.erid){   // без erid рекламу не показываем: маркировка обязательна
       a.href = o.url; a.target='_blank'; a.rel='sponsored noopener'; a.textContent = o.label || a.textContent;
       if(o.advertiser || o.erid){
         var m = document.createElement('small'); m.className='admark';

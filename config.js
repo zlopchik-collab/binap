@@ -27,7 +27,7 @@ window.SITE_CONFIG = {
   // advertiser и erid — для маркировки рекламы (обязательно).
   OFFERS: {
     rko: { url: "", label: "сравнить тарифы и открыть счёт", advertiser: "", erid: "" },
-    reg: { url: "", label: "зарегистрировать ИП через банк",  advertiser: "", erid: "" },
+    reg: { url: "https://l.inssmart.ru/kkjc3v", label: "перейти к оформлению",  advertiser: "", erid: "" },
     ai:  { url: "", label: "попробовать нейросеть для бизнеса", advertiser: "", erid: "" },
     buh: { url: "", label: "подключить онлайн-бухгалтерию", advertiser: "", erid: "" },
     ekv: { url: "", label: "сравнить тарифы эквайринга", advertiser: "", erid: "" },
