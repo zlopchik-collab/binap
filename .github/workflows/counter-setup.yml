@@ -1,0 +1,36 @@
+# Настройка таблицы счётчика через Document API: создаёт таблицу hits (k — String, ключ партиции), если её нет,
+# и проверяет запись. Ничего не удаляет.
+name: Counter setup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.YC_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET }}
+      YDB_DOCAPI_ENDPOINT: ${{ vars.COUNTER_ENDPOINT || 'https://docapi.serverless.yandexcloud.net/ru-central1/b1ghmbg73m0hsfffhs49/etn3pm5hudp4d1vhugt8' }}
+    steps:
+      - name: Проверяем и создаём таблицу hits
+        timeout-minutes: 10
+        run: |
+          pip install -q boto3
+          python3 - <<'PY'
+          import os, time, boto3, botocore
+          cfg = botocore.config.Config(connect_timeout=10, read_timeout=60, retries={"max_attempts": 2})
+          ep = os.environ["YDB_DOCAPI_ENDPOINT"]
+          c = boto3.client("dynamodb", endpoint_url=ep, region_name="ru-central1", config=cfg)
+          names = c.list_tables().get("TableNames", [])
+          print("Таблицы:", names)
+          if "hits" not in names:
+              c.create_table(TableName="hits", KeySchema=[{"AttributeName": "k", "KeyType": "HASH"}],
+                             AttributeDefinitions=[{"AttributeName": "k", "AttributeType": "S"}])
+              time.sleep(5); print("Создана таблица hits")
+          else:
+              print("Описание hits:", c.describe_table(TableName="hits")["Table"].get("KeySchema"))
+          t = boto3.resource("dynamodb", endpoint_url=ep, region_name="ru-central1", config=cfg).Table("hits")
+          t.update_item(Key={"k": "setup|check"}, UpdateExpression="ADD views :one", ExpressionAttributeValues={":one": 1})
+          print("Запись и чтение:", t.get_item(Key={"k": "setup|check"}).get("Item"))
+          PY
