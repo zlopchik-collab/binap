@@ -98,6 +98,16 @@
   $$('[data-push]').forEach(function(b){ b.hidden = !C.PUSH_SCRIPT_URL; });
   if(C.PUSH_SCRIPT_URL){ var s=document.createElement('script'); s.src=C.PUSH_SCRIPT_URL; s.async=true; document.head.appendChild(s); }
 
+  /* Собственный счётчик: без cookie, без IP, без идентификаторов. Передаём только страницу,
+     источник перехода (домен), тип устройства и признак первого просмотра в сессии. */
+  if(C.COUNTER_URL && navigator.sendBeacon){
+    var ses = false; try{ ses = !sessionStorage.getItem('bnp_v'); sessionStorage.setItem('bnp_v','1'); }catch(e){}
+    var ref = ''; try{ var rh = document.referrer ? new URL(document.referrer).hostname : ''; if(rh && rh !== location.hostname) ref = rh; }catch(e){}
+    var u = new URLSearchParams(location.search).get('utm_source') || '';
+    navigator.sendBeacon(C.COUNTER_URL, JSON.stringify({ p: location.pathname, r: u ? 'utm:' + u : ref,
+      d: /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'm' : 'd', v: ses ? 1 : 0 }));
+  }
+
   /* Cookie и аналитика: счётчики грузим только после согласия (152-ФЗ) */
   function loadCounters(){
     var c = window.BNP_CNT || {}, d = document;

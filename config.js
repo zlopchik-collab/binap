@@ -23,6 +23,10 @@ window.SITE_CONFIG = {
   // (SendPulse, Gravitec и т. п.). Пусто — кнопка уведомлений скрыта.
   PUSH_SCRIPT_URL: "",
 
+  // Собственный счётчик посещаемости без cookie и без IP (tools/counter).
+  // Адрес функции Yandex Cloud Functions. Пусто — счётчик не работает.
+  COUNTER_URL: "",
+
   // Партнёрские ссылки. url — ссылка из кабинета партнёрки,
   // advertiser и erid — для маркировки рекламы (обязательно).
   OFFERS: {
