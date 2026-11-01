@@ -27,7 +27,7 @@ window.SITE_CONFIG = {
   // advertiser и erid — для маркировки рекламы (обязательно).
   OFFERS: {
     rko: { url: "", label: "сравнить тарифы и открыть счёт", advertiser: "", erid: "" },
-    reg: { url: "https://trk.ppdu.ru/click/kSZBK1fb?erid=2SDnjeQd3er&sub1=binap", label: "перейти к оформлению",  advertiser: "", erid: "2SDnjeQd3er" },
+    reg: { url: "https://trk.ppdu.ru/click/Yfbwpe2u?erid=2SDnjeEA46e&sub1=binap", label: "перейти к оформлению",  advertiser: "", erid: "2SDnjeEA46e" },
     ai:  { url: "", label: "попробовать нейросеть для бизнеса", advertiser: "", erid: "" },
     buh: { url: "", label: "подключить онлайн-бухгалтерию", advertiser: "", erid: "" },
     ekv: { url: "", label: "сравнить тарифы эквайринга", advertiser: "", erid: "" },
