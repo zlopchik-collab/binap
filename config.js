@@ -25,7 +25,7 @@ window.SITE_CONFIG = {
 
   // Собственный счётчик посещаемости без cookie и без IP (tools/counter).
   // Адрес функции Yandex Cloud Functions. Пусто — счётчик не работает.
-  COUNTER_URL: "",
+  COUNTER_URL: "https://functions.yandexcloud.net/d4et3se79huv0a38k1cl",
 
   // Партнёрские ссылки. url — ссылка из кабинета партнёрки,
   // advertiser и erid — для маркировки рекламы (обязательно).
