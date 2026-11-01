@@ -1,0 +1,61 @@
+# Копируется сборщиком (build.py) в репозиторий сайта как .github/workflows/counter-stats.yml.
+# Сводка собственного счётчика посещаемости (без персональных данных) за последние 7 дней.
+# Запуск вручную (workflow_dispatch) и по понедельникам. Ключ — секреты YC_KEY_ID / YC_SECRET
+# (у сервисного аккаунта есть роль ydb.editor), адрес базы — переменная COUNTER_ENDPOINT или значение по умолчанию.
+name: Counter stats
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_hit:
+        description: "Отправить тестовый заход /counter-test перед сводкой"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "15 4 * * 1"
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.YC_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET }}
+      YDB_DOCAPI_ENDPOINT: ${{ vars.COUNTER_ENDPOINT || 'https://docapi.serverless.yandexcloud.net/ru-central1/b1ghmbg73m0hsfffhs49/etn3pm5hudp4d1vhugt8' }}
+      FUNC: https://functions.yandexcloud.net/d4et3se79huv0a38k1cl
+    steps:
+      - name: Тестовый заход
+        if: ${{ inputs.test_hit }}
+        run: |
+          curl -sS -o /dev/null -w "Функция ответила: %{http_code}\n" -X POST -H "Content-Type: text/plain" \
+            -d '{"p":"/counter-test","r":"","d":"d","v":1}' "$FUNC"
+          sleep 3
+      - name: Сводка за 7 дней
+        run: |
+          pip install -q boto3
+          python3 - <<'PY'
+          import collections, datetime, os, boto3
+          t = boto3.resource("dynamodb", endpoint_url=os.environ["YDB_DOCAPI_ENDPOINT"], region_name="ru-central1").Table("hits")
+          items, kw = [], {}
+          while True:
+              r = t.scan(**kw); items += r["Items"]
+              if "LastEvaluatedKey" not in r: break
+              kw["ExclusiveStartKey"] = r["LastEvaluatedKey"]
+          msk = datetime.datetime.utcnow() + datetime.timedelta(hours=3)
+          start = (msk - datetime.timedelta(days=6)).strftime("%Y-%m-%d")
+          days, vis, pages, src, dev = (collections.Counter() for _ in range(5))
+          for it in items:
+              day, kind, *rest = it["k"].split("|")
+              if day < start: continue
+              v, n = int(it.get("views", 0)), int(it.get("visits", 0))
+              if kind == "all": days[day] += v; vis[day] += n
+              elif kind == "p": pages[rest[0]] += v
+              elif kind == "r": src[rest[0]] += n
+              elif kind == "d": dev[rest[0]] += n
+          print(f"Записей в таблице: {len(items)}")
+          print(f"С {start}: просмотров {sum(days.values())}, визитов {sum(vis.values())}")
+          for d in sorted(days): print(f"  {d}: просмотры {days[d]}, визиты {vis[d]}")
+          print("Топ страниц:"); [print(f"  {n:6}  {p}") for p, n in pages.most_common(20)]
+          print("Источники входов:"); [print(f"  {n:6}  {s}") for s, n in src.most_common(15)]
+          tot = sum(dev.values()) or 1
+          print(f"Телефоны {round(100*dev['m']/tot)}%, компьютеры {round(100*dev['d']/tot)}%")
+          PY
