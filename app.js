@@ -41,7 +41,7 @@
       a.href = o.url; a.target='_blank'; a.rel='sponsored noopener'; a.textContent = o.label || a.textContent;
       if(o.advertiser || o.erid){
         var m = document.createElement('small'); m.className='admark';
-        m.textContent = 'Реклама. ' + (o.advertiser||'') + (o.erid ? ', erid: ' + o.erid : '');
+        m.textContent = 'Реклама' + (o.advertiser ? '. ' + o.advertiser : '') + (o.erid ? (o.advertiser ? ', ' : '. ') + 'erid: ' + o.erid : '');
         a.parentNode.insertBefore(m, a.nextSibling);
       }
     } else {
