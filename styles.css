@@ -295,3 +295,8 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .tldr .label{display:block}
 .incta{margin:14px 0;padding:10px 14px;border:1px dashed var(--line);border-radius:var(--r);font-size:15px;line-height:1.5;color:var(--muted)}
 .incta a{color:var(--accent);font-weight:600}
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;z-index:40;max-width:640px;margin:0 auto;background:var(--paper);color:var(--ink);border:2px solid var(--ink);border-radius:12px;padding:14px 16px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.cookie p{margin:0 0 10px;font-size:14px;line-height:1.45}
+.cookie-b{display:flex;gap:8px;flex-wrap:wrap}
+.cookie[hidden]{display:none}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}

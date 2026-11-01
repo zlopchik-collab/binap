@@ -98,11 +98,44 @@
   $$('[data-push]').forEach(function(b){ b.hidden = !C.PUSH_SCRIPT_URL; });
   if(C.PUSH_SCRIPT_URL){ var s=document.createElement('script'); s.src=C.PUSH_SCRIPT_URL; s.async=true; document.head.appendChild(s); }
 
+  /* Cookie и аналитика: счётчики грузим только после согласия (152-ФЗ) */
+  function loadCounters(){
+    var c = window.BNP_CNT || {}, d = document;
+    if(c.metrika){
+      window.ym = window.ym || function(){ (window.ym.a = window.ym.a || []).push(arguments); }; window.ym.l = 1*new Date();
+      var m = d.createElement('script'); m.async = true; m.src = 'https://mc.yandex.ru/metrika/tag.js'; d.head.appendChild(m);
+      window.ym(+c.metrika, 'init', {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+    }
+    if(c.topmail){
+      var _tmr = window._tmr || (window._tmr = []); _tmr.push({id:String(c.topmail), type:'pageView', start:(new Date()).getTime()});
+      var t = d.createElement('script'); t.async = true; t.id = 'tmr-code'; t.src = 'https://top-fwz1.mail.ru/js/code.js'; d.head.appendChild(t);
+    }
+  }
+  var cookie = document.getElementById('cookie'), choice = store.get('bnp_cookie');
+  if(choice === 'yes') loadCounters();
+  function decide(v){
+    store.set('bnp_cookie', v); if(cookie) cookie.hidden = true;
+    if(v === 'yes') loadCounters();
+    var st = document.getElementById('stick'); if(st && st.dataset.wait){ st.hidden = false; delete st.dataset.wait; }
+  }
+  if(cookie){
+    if(!choice) cookie.hidden = false;
+    var y = document.getElementById('cookie-yes'), n = document.getElementById('cookie-no');
+    if(y) y.addEventListener('click', function(){ decide('yes'); });
+    if(n) n.addEventListener('click', function(){ decide('no'); });
+  }
+  var cr = document.getElementById('cookie-reset');
+  if(cr) cr.addEventListener('click', function(){
+    // Отзыв согласия: убираем выбор и перезагружаем страницу, чтобы счётчики не работали
+    store.set('bnp_cookie', ''); location.reload();
+  });
+
   /* Нижняя плашка «каждое утро в MAX» */
   var stick = document.getElementById('stick');
   if(stick){
     var hideUntil = +store.get('bnp_stick') || 0;
     if(Date.now() < hideUntil || store.get('bnp_sub')) stick.hidden = true;
+    else if(cookie && !cookie.hidden){ stick.hidden = true; stick.dataset.wait = '1'; }
     var x = stick.querySelector('.x');
     if(x) x.addEventListener('click', function(){ stick.hidden = true; store.set('bnp_stick', String(Date.now()+3*864e5)); });
   }
