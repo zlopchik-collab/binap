@@ -26,8 +26,8 @@ jobs:
       - name: Тестовый заход
         if: ${{ inputs.test_hit }}
         run: |
-          curl -sS -o /dev/null -w "Функция ответила: %{http_code}\n" -X POST -H "Content-Type: text/plain" \
-            -d '{"p":"/counter-test","r":"","d":"d","v":1}' "$FUNC"
+          curl -sS -D - -o /dev/null -X POST -H "Content-Type: text/plain" \
+            -d '{"p":"/counter-test","r":"","d":"d","v":1}' "$FUNC" | grep -iE "^HTTP|^x-err" || true
           sleep 3
       - name: Сводка за 7 дней
         run: |
