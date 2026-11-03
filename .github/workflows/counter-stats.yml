@@ -29,33 +29,38 @@ jobs:
           curl -sS -D - -o /dev/null -X POST -H "Content-Type: text/plain" \
             -d '{"p":"/counter-test","r":"","d":"d","v":1}' "$FUNC" | grep -iE "^HTTP|^x-err" || true
           sleep 3
-      - name: Сводка за 7 дней
+      - name: Сводка за 30 дней
         run: |
           pip install -q boto3
           python3 - <<'PY'
-          import collections, datetime, os, boto3
+          import collections, datetime, json, os, boto3
           t = boto3.resource("dynamodb", endpoint_url=os.environ["YDB_DOCAPI_ENDPOINT"], region_name="ru-central1").Table("hits")
           items, kw = [], {}
           while True:
               r = t.scan(**kw); items += r["Items"]
               if "LastEvaluatedKey" not in r: break
               kw["ExclusiveStartKey"] = r["LastEvaluatedKey"]
-          msk = datetime.datetime.utcnow() + datetime.timedelta(hours=3)
-          start = (msk - datetime.timedelta(days=6)).strftime("%Y-%m-%d")
-          days, vis, pages, src, dev = (collections.Counter() for _ in range(5))
+          msk = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=3)))
+          start = (msk - datetime.timedelta(days=29)).strftime("%Y-%m-%d")
+          test = collections.Counter()
+          for it in items:  # тестовые заходы проверки счётчика вычитаем из итогов
+              day, kind, *rest = it["k"].split("|")
+              if kind == "p" and rest[0] == "/counter-test":
+                  test[day] = (int(it.get("views", 0)), int(it.get("visits", 0)))
+          days = collections.defaultdict(lambda: {"views": 0, "visits": 0, "pages": {}, "src": {}, "dev": {}})
           for it in items:
               day, kind, *rest = it["k"].split("|")
-              if day < start: continue
+              if day < start or kind == "setup": continue
               v, n = int(it.get("views", 0)), int(it.get("visits", 0))
-              if kind == "all": days[day] += v; vis[day] += n
-              elif kind == "p": pages[rest[0]] += v
-              elif kind == "r": src[rest[0]] += n
-              elif kind == "d": dev[rest[0]] += n
-          print(f"Записей в таблице: {len(items)}")
-          print(f"С {start}: просмотров {sum(days.values())}, визитов {sum(vis.values())}")
-          for d in sorted(days): print(f"  {d}: просмотры {days[d]}, визиты {vis[d]}")
-          print("Топ страниц:"); [print(f"  {n:6}  {p}") for p, n in pages.most_common(20)]
-          print("Источники входов:"); [print(f"  {n:6}  {s}") for s, n in src.most_common(15)]
-          tot = sum(dev.values()) or 1
-          print(f"Телефоны {round(100*dev['m']/tot)}%, компьютеры {round(100*dev['d']/tot)}%")
+              d = days[day]
+              if kind == "all":
+                  tv, tn = test.get(day, (0, 0)); d["views"] += v - tv; d["visits"] += n - tn
+              elif kind == "p" and rest[0] != "/counter-test": d["pages"][rest[0]] = v
+              elif kind == "r": d["src"][rest[0]] = n - (test.get(day, (0, 0))[1] if rest[0] == "direct" else 0)
+              elif kind == "d": d["dev"][rest[0]] = n - (test.get(day, (0, 0))[1] if rest[0] == "d" else 0)
+          out = {k: days[k] for k in sorted(days)}
+          for d in out.values():
+              d["src"] = {k: v for k, v in d["src"].items() if v > 0}; d["dev"] = {k: v for k, v in d["dev"].items() if v > 0}
+          for k, d in out.items(): print(f"{k}: просмотры {d['views']}, визиты {d['visits']}")
+          print("STATS_JSON " + json.dumps({"generated": msk.strftime("%Y-%m-%d %H:%M"), "days": out}, ensure_ascii=False))
           PY
