@@ -50,7 +50,7 @@ jobs:
           days = collections.defaultdict(lambda: {"views": 0, "visits": 0, "pages": {}, "src": {}, "dev": {}})
           for it in items:
               day, kind, *rest = it["k"].split("|")
-              if day < start or kind == "setup": continue
+              if not day[:4].isdigit() or day < start: continue
               v, n = int(it.get("views", 0)), int(it.get("visits", 0))
               d = days[day]
               if kind == "all":
