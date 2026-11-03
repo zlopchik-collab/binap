@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CAC, LTV и ROMI на пальцах: окупается ли ваша реклама</title>
+<meta name="description" content="Как посчитать стоимость клиента, его ценность и окупаемость рекламы по каждому каналу. Формулы, пример расчёта и таблица, в которую подставить свои цифры.">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://binap.ru/stati/cac-ltv-romi-kak-poschitat-okupaemost-reklamy.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CAC, LTV и ROMI на пальцах: окупается ли ваша реклама">
+<meta property="og:description" content="Как посчитать стоимость клиента, его ценность и окупаемость рекламы по каждому каналу. Формулы, пример расчёта и таблица, в которую подставить свои цифры.">
+<meta property="og:url" content="https://binap.ru/stati/cac-ltv-romi-kak-poschitat-okupaemost-reklamy.html">
+<meta property="og:image" content="https://binap.ru/img/cover/cac-ltv-romi-kak-poschitat-okupaemost-reklamy.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="Бизнес на пальцах">
+<meta name="theme-color" content="#C62A1E">
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../img/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<link rel="preload" href="/fonts/golos-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/alegreya-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css?v=3842f858">
+<link rel="alternate" type="application/rss+xml" title="Бизнес на пальцах" href="https://binap.ru/rss.xml">
+<meta name="yandex-verification" content="cae5fc593e7783f6"><meta name="google-site-verification" content="TMnb9N52iccsxqx5o-jf5Vjg5QQppQeJsycJJm8BrVA"><meta name="msvalidate.01" content="FB223D7640AF298BA7629EFA5745A460">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CAC, LTV и ROMI на пальцах: окупается ли ваша реклама", "description": "Как посчитать стоимость клиента, его ценность и окупаемость рекламы по каждому каналу. Формулы, пример расчёта и таблица, в которую подставить свои цифры.", "datePublished": "2026-11-03", "dateModified": "2026-11-03", "author": {"@type": "Person", "name": "Дмитрий Бочкарев", "jobTitle": "Главный редактор", "url": "https://binap.ru/o-proekte.html", "sameAs": ["https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws", "https://vk.com/binapru", "https://dzen.ru/binapru", "https://t.me/binapru"]}, "abstract": "Как посчитать стоимость клиента, его ценность и окупаемость рекламы по каждому каналу. Формулы, пример расчёта и таблица, в которую подставить свои цифры.", "keywords": "Продажи и маркетинг", "publisher": {"@type": "Organization", "name": "Бизнес на пальцах", "logo": {"@type": "ImageObject", "url": "https://binap.ru/img/icon-512.png"}}, "mainEntityOfPage": "https://binap.ru/stati/cac-ltv-romi-kak-poschitat-okupaemost-reklamy.html", "inLanguage": "ru", "image": "https://binap.ru/img/cover/cac-ltv-romi-kak-poschitat-okupaemost-reklamy.png", "articleSection": "Продажи и маркетинг"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://binap.ru/"}, {"@type": "ListItem", "position": 2, "name": "Продажи и маркетинг", "item": "https://binap.ru/rubrika/prodazhi.html"}, {"@type": "ListItem", "position": 3, "name": "CAC, LTV и ROMI на пальцах: окупается ли ваша реклама"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что такое CAC простыми словами?", "acceptedAnswer": {"@type": "Answer", "text": "Сколько денег вы тратите на рекламу, чтобы получить одного нового клиента."}}, {"@type": "Question", "name": "Какое соотношение LTV и CAC нормальное?", "acceptedAnswer": {"@type": "Answer", "text": "LTV должен быть больше CAC: иначе каждый новый клиент приносит убыток. Чем больше запас, тем устойчивее канал."}}, {"@type": "Question", "name": "Чем ROMI отличается от ROI?", "acceptedAnswer": {"@type": "Answer", "text": "ROMI считает окупаемость только маркетинговых расходов, ROI — любых вложений, например в оборудование или ремонт."}}]}</script>
+
+</head><body class="is-article rub-prodazhi" data-root="../">
+<header class="top"><div class="wrap">
+<a class="brand" href="../"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="var(--accent)"/><g stroke="var(--accent-ink)" stroke-width="3" stroke-linecap="round"><path d="M11 11v18M17 11v18M23 11v18M29 11v18"/><path d="M8 25L32 14"/></g></svg><b>Бизнес на пальцах</b></a>
+<nav class="nav" aria-label="Рубрики"><a href="../rubrika/chto-pomenyalos.html"><span class="dot dot-change"></span>Что поменялось</a><a href="../rubrika/posschitali.html"><span class="dot dot-count"></span>Посчитали</a><a href="../rubrika/kak-sdelat.html"><span class="dot dot-howto"></span>Как сделать</a><a href="../rubrika/razbor-oshibki.html"><span class="dot dot-mistake"></span>Разбор ошибки</a><a href="../rubrika/instrument.html"><span class="dot dot-tool"></span>Инструмент недели</a><a href="../rubrika/kolonka.html"><span class="dot dot-column"></span>Колонка редактора</a><a href="../rubrika/prodazhi.html" aria-current=page><span class="dot dot-sales"></span>Продажи и маркетинг</a><a href="../rubrika/obzor-rynka.html"><span class="dot dot-market"></span>Обзор рынка</a><a href="../rubrika/investicii.html"><span class="dot dot-invest"></span>Инвестиции и финансирование</a><a href="../rubrika/ii-dlya-biznesa.html"><span class="dot dot-ai"></span>ИИ для бизнеса</a><a href="../kalkulator-usn.html">Калькулятор УСН</a></nav>
+<a class="btn small" href="../podpiska.html">Подписаться</a>
+</div></header>
+<nav class="subnav" aria-label="Рубрики"><a href="../rubrika/chto-pomenyalos.html"><span class="dot dot-change"></span>Что поменялось</a><a href="../rubrika/posschitali.html"><span class="dot dot-count"></span>Посчитали</a><a href="../rubrika/kak-sdelat.html"><span class="dot dot-howto"></span>Как сделать</a><a href="../rubrika/razbor-oshibki.html"><span class="dot dot-mistake"></span>Разбор ошибки</a><a href="../rubrika/instrument.html"><span class="dot dot-tool"></span>Инструмент недели</a><a href="../rubrika/kolonka.html"><span class="dot dot-column"></span>Колонка редактора</a><a href="../rubrika/prodazhi.html" aria-current=page><span class="dot dot-sales"></span>Продажи и маркетинг</a><a href="../rubrika/obzor-rynka.html"><span class="dot dot-market"></span>Обзор рынка</a><a href="../rubrika/investicii.html"><span class="dot dot-invest"></span>Инвестиции и финансирование</a><a href="../rubrika/ii-dlya-biznesa.html"><span class="dot dot-ai"></span>ИИ для бизнеса</a><a href="../kalkulator-usn.html">Калькулятор УСН</a></nav>
+<main>
+<article class="article">
+<div class="crumbs"><a href="../">Главная</a><span>/</span><a href="../rubrika/prodazhi.html">Продажи и маркетинг</a></div>
+<h1>CAC, LTV и ROMI на пальцах: окупается ли ваша реклама</h1>
+<div class="meta"><span>Опубликовано <time datetime="2026-11-03">3 ноября 2026</time></span><span>Дмитрий Бочкарев</span><span>3 мин чтения</span></div>
+<img class="cover" src="../img/cover/cac-ltv-romi-kak-poschitat-okupaemost-reklamy.png" width="1200" height="630" alt="CAC, LTV и ROMI на пальцах: окупается ли ваша реклама">
+<div class="topics"><span>Темы:</span><a href="../tema/prodazhi-marketing.html">Продажи и маркетинг</a></div>
+
+<div class="prose"><p>Реклама «вроде работает», заявки идут — но окупается ли она? Три показателя отвечают на этот вопрос: сколько стоит привлечь клиента (CAC), сколько он приносит за всё время (LTV) и сколько возвращает каждый рубль рекламы (ROMI). Считаются они на калькуляторе за 15 минут.</p>
+<p><strong>Коротко</strong></p>
+<ul>
+<li><strong>CAC</strong> — стоимость привлечения клиента: расходы на канал ÷ число новых клиентов из него.</li>
+<li><strong>LTV</strong> — сколько маржинального дохода приносит клиент за всё время: средний чек × число покупок × доля маржинального дохода.</li>
+<li><strong>ROMI</strong> — окупаемость маркетинга: (маржинальный доход от рекламы − расходы на рекламу) ÷ расходы на рекламу × 100%.</li>
+<li>Если CAC больше LTV, канал убыточен, сколько бы заявок он ни давал.</li>
+<li>Считайте отдельно по каждому каналу: средняя цифра прячет убыточные.</li>
+</ul><p class="incta">Сроки, изменения и разборы для ИП и самозанятых — каждое утро в <a href="https://t.me/binapru" target="_blank" rel="noopener">Telegram</a> и <a href="https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws" target="_blank" rel="noopener">MAX</a>. Подпишитесь, чтобы не пропустить.</p>
+<h2>Формулы</h2>
+<p><strong>CAC (стоимость привлечения клиента)</strong> = расходы на канал за период ÷ новые клиенты из этого канала.
+Пример: 50 000 ₽ на рекламу, 25 новых клиентов → CAC = 2 000 ₽.</p>
+<p><strong>LTV (ценность клиента)</strong> = средний чек × среднее число покупок за время работы с клиентом × доля маржинального дохода.
+Доля маржинального дохода — это (цена − переменные затраты на единицу) ÷ цена. Не путайте её с наценкой и с рентабельностью бизнеса.
+Пример: чек 5 000 ₽, 3 покупки, доля маржинального дохода 50% → LTV = 7 500 ₽.</p>
+<p><strong>ROMI (окупаемость маркетинга)</strong> = (маржинальный доход от рекламы − расходы на рекламу) ÷ расходы на рекламу × 100%.
+Пример: реклама 50 000 ₽ принесла 25 клиентов с LTV 7 500 ₽ → маржинальный доход 187 500 ₽. ROMI = (187 500 − 50 000) ÷ 50 000 = 275%.</p>
+<p>Встречается и упрощённый ROMI по выручке, а не по маржинальному доходу. Он всегда выглядит лучше, чем на самом деле: выручка включает себестоимость товара.</p>
+<h2>Пример: три канала одного магазина</h2>
+<p><strong>Расчёт редакции, цифры условные.</strong> LTV клиента — 7 500 ₽.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Канал</th>
+<th>Расходы</th>
+<th>Новых клиентов</th>
+<th>CAC</th>
+<th>LTV ÷ CAC</th>
+<th>Вывод</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Контекстная реклама</td>
+<td>60 000 ₽</td>
+<td>30</td>
+<td>2 000 ₽</td>
+<td>3,75</td>
+<td>окупается</td>
+</tr>
+<tr>
+<td>Блогер</td>
+<td>30 000 ₽</td>
+<td>6</td>
+<td>5 000 ₽</td>
+<td>1,5</td>
+<td>на грани</td>
+</tr>
+<tr>
+<td>Таргет в соцсетях</td>
+<td>40 000 ₽</td>
+<td>4</td>
+<td>10 000 ₽</td>
+<td>0,75</td>
+<td>убыточен</td>
+</tr>
+</tbody>
+</table></div>
+<p>В среднем по трём каналам CAC = 130 000 ÷ 40 = 3 250 ₽, и кажется, что всё хорошо. Разбивка показывает, что таргет теряет деньги, а блогер едва окупается.</p>
+<h2>Что сделать на этой неделе</h2>
+<ol>
+<li>Выпишите расходы на рекламу за последний месяц по каждому каналу.</li>
+<li>Узнайте, сколько новых клиентов пришло из каждого: по utm-меткам, промокодам или вопросу «откуда узнали».</li>
+<li>Посчитайте средний чек, число покупок на клиента за год и долю маржинального дохода.</li>
+<li>Заполните таблицу как в примере. Каналы с LTV ÷ CAC меньше 1 — на паузу или переделку.</li>
+<li>Повторяйте раз в месяц.</li>
+</ol>
+<p>Где клиенты отваливаются между заявкой и покупкой — в статье <a href="voronka-prodazh-malyj-biznes-kak-poschitat.html">воронка продаж для малого бизнеса</a>. Как считать отдачу от блогеров — в разборе <a href="rynok-blogerov-69-mlrd-akar-2025.html">рынка рекламы у блогеров</a>.</p>
+<p><strong>Частые вопросы</strong></p>
+<p><strong>Что такое CAC простыми словами?</strong> Сколько денег вы тратите на рекламу, чтобы получить одного нового клиента.</p>
+<p><strong>Какое соотношение LTV и CAC нормальное?</strong> LTV должен быть больше CAC: иначе каждый новый клиент приносит убыток. Чем больше запас, тем устойчивее канал.</p>
+<p><strong>Чем ROMI отличается от ROI?</strong> ROMI считает окупаемость только маркетинговых расходов, ROI — любых вложений, например в оборудование или ремонт.</p></div>
+<aside class="related"><span class="label">По теме</span><ul><li><a href="vozvraty-tovara-analiz-s-nejrosetyu.html">Возвраты товара: как найти причины с помощью нейросети</a></li><li><a href="otvety-na-otzyvy-s-nejrosetyu-shablony.html">Ответы на отзывы с нейросетью: запросы для карт и маркетплейсов</a></li><li><a href="skript-pervogo-zvonka-struktura-oshibki.html">Скрипт первого звонка для малого бизнеса: структура и 5 ошибок</a></li><li><a href="voronka-prodazh-malyj-biznes-kak-poschitat.html">Воронка продаж для малого бизнеса: как посчитать и найти потери</a></li></ul></aside>
+<div class="sources"><span class="label">Источники</span><ul><li><a href="https://vc.ru/marketing/1692657-kak-rasschitat-effektivnost-reklamy-prostye-formuly-dlya-biznesa" target="_blank" rel="noopener">vc.ru: как рассчитать эффективность рекламы — простые формулы для бизнеса</a></li></ul></div>
+<div class="endcta"><aside class="subbox">
+<h3>Такие разборы — каждое утро</h3>
+<p>Каждое утро по будням — короткие новости в канале. В VK — с картинками, в Дзене — длинные разборы и чек-листы.</p>
+<div class="channels">
+<a class="btn" data-link="max" href="https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws" rel="noopener">Канал в MAX</a>
+<a class="btn ghost" data-link="vk" href="https://vk.com/binapru" rel="noopener">VK</a>
+<a class="btn ghost" data-link="dzen" href="https://dzen.ru/binapru" rel="noopener">Дзен</a>
+<a class="btn ghost" data-link="tg" href="https://t.me/binapru" rel="noopener">Telegram</a>
+</div>
+
+<button class="btn ghost" data-push type="button" hidden>Включить уведомления о новых статьях</button>
+</aside></div>
+</article>
+<section class="next"><div class="section-head"><h2>Читать дальше</h2></div><div class="cards"><a class="card card-howto" href="../stati/hosting-upal-chto-delat-biznesu-s-sajtom-i-pochtoj.html"><span class="tag tag-howto"><i></i>Как сделать</span><h3>Хостинг упал после кибератаки: что делать с сайтом и почтой</h3><p>Beget объявил форс-мажор после кибератаки 2 ноября. Что известно и чек-лист для бизнеса, чей сайт и почта остались без доступа, — и как подстраховаться.</p><div class="todo"><b>Сделать</b><span>Сделать собственную копию сайта и базы вне хостинга и завести запасной канал связи с клиентами</span></div></a><a class="card card-howto" href="../stati/registraciya-ip-ooo-goshlina-onlajn.html"><span class="tag tag-howto"><i></i>Как сделать</span><h3>Сколько стоит открыть ИП и ООО: пошлина, подпись, счёт и касса</h3><p>Пошлину за регистрацию ИП и ООО не платят при подаче онлайн, через МФЦ или нотариуса. Что ещё входит в расходы на старте и что проверить в банке.</p><div class="todo"><b>Сделать</b><span>Подать документы на регистрацию онлайн или через МФЦ и сравнить тарифы 3 банков после льготного периода</span></div></a></div></section>
+</main>
+<div class="modal-bg" id="modal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-t">
+<button class="close" type="button" aria-label="Закрыть">×</button>
+<span class="label">Не пропустите следующее изменение</span>
+<h3 id="m-t">Новости для ИП каждое утро — за 3 минуты</h3>
+<p class="muted" style="margin:0">Налоги, банки, штрафы и сроки. Только то, что касается ваших денег, и что с этим сделать.</p>
+<div class="channels">
+<a class="btn" data-link="max" href="https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws" rel="noopener">Канал в MAX</a>
+<a class="btn ghost" data-link="vk" href="https://vk.com/binapru" rel="noopener">VK</a>
+<a class="btn ghost" data-link="dzen" href="https://dzen.ru/binapru" rel="noopener">Дзен</a>
+<a class="btn ghost" data-link="tg" href="https://t.me/binapru" rel="noopener">Telegram</a>
+</div>
+
+</div></div>
+<footer class="foot"><div class="wrap">
+<div><b style="color:var(--ink)">Бизнес на пальцах</b><p>Независимое медиа для ИП и небольших компаний. Главный редактор — Дмитрий Бочкарев.</p>
+<p>Материалы носят справочный характер и не заменяют консультацию бухгалтера или юриста. Партнёрские ссылки помечены как реклама.</p></div>
+<div><span class="label">Рубрики</span><ul><li><a href="../rubrika/chto-pomenyalos.html"><span class="dot dot-change"></span>Что поменялось</a></li><li><a href="../rubrika/posschitali.html"><span class="dot dot-count"></span>Посчитали</a></li><li><a href="../rubrika/kak-sdelat.html"><span class="dot dot-howto"></span>Как сделать</a></li><li><a href="../rubrika/razbor-oshibki.html"><span class="dot dot-mistake"></span>Разбор ошибки</a></li><li><a href="../rubrika/instrument.html"><span class="dot dot-tool"></span>Инструмент недели</a></li><li><a href="../rubrika/kolonka.html"><span class="dot dot-column"></span>Колонка редактора</a></li><li><a href="../rubrika/prodazhi.html"><span class="dot dot-sales"></span>Продажи и маркетинг</a></li><li><a href="../rubrika/obzor-rynka.html"><span class="dot dot-market"></span>Обзор рынка</a></li><li><a href="../rubrika/investicii.html"><span class="dot dot-invest"></span>Инвестиции и финансирование</a></li><li><a href="../rubrika/ii-dlya-biznesa.html"><span class="dot dot-ai"></span>ИИ для бизнеса</a></li></ul></div>
+<div><span class="label">Темы</span><ul><li><a href="../tema/usn.html">УСН</a></li><li><a href="../tema/nds.html">НДС</a></li><li><a href="../tema/vznosy-enp.html">Взносы и ЕНП</a></li><li><a href="../tema/patent-ausn.html">Патент и АУСН</a></li><li><a href="../tema/markirovka.html">Маркировка</a></li><li><a href="../tema/marketplejsy.html">Маркетплейсы</a></li><li><a href="../tema/shtrafy-proverki.html">Штрафы и проверки</a></li><li><a href="../tema/banki.html">Банки и счета</a></li><li><a href="../tema/samozanyatye.html">Самозанятые</a></li><li><a href="../tema/ved-import.html">Импорт и ВЭД</a></li><li><a href="../tema/otkrytie-biznesa.html">Открытие бизнеса</a></li><li><a href="../tema/kadry.html">Кадры и зарплата</a></li><li><a href="../tema/ekvajring.html">Эквайринг и кассы</a></li><li><a href="../tema/strahovanie.html">Страхование</a></li><li><a href="../tema/prodazhi-marketing.html">Продажи и маркетинг</a></li></ul></div>
+<div><span class="label">Проект</span><ul>
+<li><a href="../podpiska.html">Подписка</a></li><li><a href="../kalkulator-usn.html">Калькулятор УСН</a></li><li><a href="../kalkulator-vznosov-ip.html">Калькулятор взносов ИП</a></li>
+<li><a href="../o-proekte.html">О проекте и реклама</a></li><li><a href="../politika.html">Политика обработки данных</a></li><li><a href="../rss.xml">RSS-лента</a></li></ul></div>
+</div></footer>
+<div class="stick" id="stick"><span>Новости для ИП каждое утро</span><a class="btn small" data-link="max" href="https://max.ru/join/DHgSiTQcs-cxB178obG87Np2JWDQfUC1TIkRrLdGFws" rel="noopener">Читать в MAX</a><a class="btn small ghost" href="../podpiska.html">Все способы</a><button class="x" type="button" aria-label="Скрыть">×</button></div>
+<script src="../config.js?v=c4b616a1"></script>
+<script src="../app.js?v=06be09fa"></script>
+</body></html>
