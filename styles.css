@@ -300,3 +300,20 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .cookie-b{display:flex;gap:8px;flex-wrap:wrap}
 .cookie[hidden]{display:none}
 .linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+/* Каталог курсов /kursy-ii/ */
+.kc-bar{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.kc-bar input[type=search]{flex:1 1 260px;min-width:0;font:inherit;padding:11px 14px;border:2px solid var(--ink);border-radius:10px;background:var(--paper);color:var(--ink)}
+.kc-bar select{font:inherit;padding:10px 12px;border:2px solid var(--line,#d9d2c3);border-radius:10px;background:var(--paper);color:var(--ink);max-width:100%}
+.kc-free{display:flex;align-items:center;gap:6px;font-size:15px}
+.kc-count{margin:14px 0 10px;font-size:14px}
+.kc-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr))}
+.kc{border:2px solid var(--ink);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;background:var(--paper);min-width:0}
+.kc[hidden]{display:none}
+.kc-s{font:600 13px/1.3 var(--mono,monospace);color:var(--muted)}
+.kc-t{margin:0;font-size:18px;line-height:1.25;overflow-wrap:anywhere}
+.kc-p{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-variant-numeric:tabular-nums}
+.kc-p s{color:var(--muted);font-size:14px}
+.kc-m{font-size:14px;color:var(--muted)}
+.kc-go{margin-top:auto;align-self:flex-start;background:var(--accent,#C62A1E);color:#fff;border-radius:999px;padding:9px 16px;font-weight:600;text-decoration:none}
+.kc-ad{margin:0;font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.kc-empty,.kc-note{font-size:14px;margin-top:14px;max-width:70ch}

@@ -1,0 +1,43 @@
+# Копируется сборщиком (build.py) в репозиторий сайта как .github/workflows/courses.yml.
+# Каждую ночь обновляет каталог курсов binap.ru/kursy-ii/ из фидов и API AdvCake (.github/courses/catalog.py),
+# сохраняет data/courses.json и страницу в main и выкладывает их в Yandex Object Storage.
+# Секрет ADVCAKE_KEY — ключ API вебмастера AdvCake (Settings → Secrets and variables → Actions).
+name: Courses
+
+on:
+  schedule:
+    - cron: "40 0 * * *"     # 03:40 по Москве
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: courses
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Обновляем каталог из AdvCake
+        env:
+          ADVCAKE_KEY: ${{ secrets.ADVCAKE_KEY }}
+        run: python3 .github/courses/catalog.py update .
+      - name: Сохраняем изменения
+        id: save
+        run: |
+          git add data/courses.json data/courses-state.json data/courses-report.json kursy-ii/index.html 2>/dev/null || true
+          if git diff --cached --quiet; then echo "changed=0" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git -c user.name="binap catalog" -c user.email="actions@users.noreply.github.com" commit -m "Каталог курсов: ночное обновление из AdvCake"
+          git push
+          echo "changed=1" >> "$GITHUB_OUTPUT"
+      - name: Выкладываем страницу каталога в Yandex Object Storage
+        if: steps.save.outputs.changed == '1' && env.YC_KEY_ID != ''
+        env:
+          YC_KEY_ID: ${{ secrets.YC_KEY_ID }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.YC_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET }}
+          AWS_DEFAULT_REGION: ru-central1
+        run: |
+          aws s3 cp kursy-ii/index.html "s3://${{ vars.YC_BUCKET || 'binap.ru' }}/kursy-ii/index.html" --endpoint-url https://storage.yandexcloud.net --cache-control "public, max-age=300"
