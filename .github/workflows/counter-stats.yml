@@ -41,7 +41,7 @@ jobs:
               if "LastEvaluatedKey" not in r: break
               kw["ExclusiveStartKey"] = r["LastEvaluatedKey"]
           msk = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=3)))
-          start = (msk - datetime.timedelta(days=29)).strftime("%Y-%m-%d")
+          start = (msk - datetime.timedelta(days=400)).strftime("%Y-%m-%d")
           test = collections.Counter()
           for it in items:  # тестовые заходы проверки счётчика вычитаем из итогов
               day, kind, *rest = it["k"].split("|")
