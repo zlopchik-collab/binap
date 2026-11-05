@@ -230,6 +230,18 @@
     runv();
   }
 
+  /* Кнопки «Скопировать» у инструкций ИИ-агентов */
+  $$('[data-copy]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var el = document.getElementById(b.getAttribute('data-copy')); if(!el) return;
+      var t = el.innerText, label = b.textContent;
+      function ok(){ b.textContent = 'Скопировано'; b.classList.add('ok'); setTimeout(function(){ b.textContent = label; b.classList.remove('ok'); }, 2000); }
+      function sel(){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+        var done = false; try{ done = document.execCommand('copy'); }catch(e){} if(done) ok(); else b.textContent = 'Текст выделен — скопируйте'; }
+      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, sel); else sel();
+    });
+  });
+
   /* Меню «Все рубрики»: закрыть по клику вне меню и по Esc */
   $$('details.more').forEach(function(d){
     document.addEventListener('click', function(e){ if(d.open && !d.contains(e.target)) d.open = false; });
