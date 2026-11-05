@@ -230,6 +230,12 @@
     runv();
   }
 
+  /* Меню «Все рубрики»: закрыть по клику вне меню и по Esc */
+  $$('details.more').forEach(function(d){
+    document.addEventListener('click', function(e){ if(d.open && !d.contains(e.target)) d.open = false; });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && d.open){ d.open = false; d.querySelector('summary').focus(); } });
+  });
+
   /* Сторис на главной: лента кружков и просмотр по одной карточке */
   (function(){
     var box = document.querySelector('.stories'), raw = document.getElementById('st-data');
