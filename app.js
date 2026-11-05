@@ -230,4 +230,100 @@
     runv();
   }
 
+  /* Сторис на главной: лента кружков и просмотр по одной карточке */
+  (function(){
+    var box = document.querySelector('.stories'), raw = document.getElementById('st-data');
+    if(!box || !raw) return;
+    var all; try{ all = JSON.parse(raw.textContent); }catch(e){ return; }
+    var list = box.querySelector('.st-list');
+    var seen = (store.get('bnp_st_seen')||'').split(',').filter(Boolean);
+    function admark(o){ return 'Реклама' + (o.advertiser ? '. ' + o.advertiser : '') + (o.erid ? ', erid: ' + o.erid : ''); }
+    // Рекламная сторис — только если в config.js есть ссылка и erid
+    $$('.st-i[data-offer]', box).forEach(function(b){
+      var o = (C.OFFERS||{})[b.getAttribute('data-offer')];
+      if(o && o.url && o.erid) b.parentNode.hidden = false;
+    });
+    var btns = $$('.st-i', box).filter(function(b){ return !b.parentNode.hidden; });
+    var order = btns.map(function(b){ return +b.getAttribute('data-i'); });
+    btns.forEach(function(b){ if(seen.indexOf(b.getAttribute('data-id')) > -1) b.classList.add('seen'); });
+
+    // Стрелки на десктопе
+    var arrows = $$('.st-arr', box);
+    function upd(){ if(arrows.length < 2) return; arrows[0].disabled = list.scrollLeft < 4; arrows[1].disabled = list.scrollLeft + list.clientWidth >= list.scrollWidth - 4; }
+    arrows.forEach(function(a){ a.addEventListener('click', function(){ list.scrollBy({left: +a.getAttribute('data-dir') * list.clientWidth * 0.8, behavior:'smooth'}); }); });
+    list.addEventListener('scroll', upd, {passive:true}); window.addEventListener('resize', upd); upd();
+
+    var DUR = 6000, sv = null, pos = 0, t0 = 0, left = DUR, raf = 0, paused = false, opener = null;
+    function esc(s){ var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+    function markSeen(id){
+      if(seen.indexOf(id) < 0){ seen.push(id); store.set('bnp_st_seen', seen.slice(-60).join(',')); }
+      btns.forEach(function(b){ if(b.getAttribute('data-id') === id) b.classList.add('seen'); });
+    }
+    function render(){
+      var it = all[order[pos]], o = it.ad ? (C.OFFERS||{})[it.ad] : null;
+      var card = sv.querySelector('.sv-card');
+      card.className = 'sv-card st-' + it.c;
+      sv.querySelector('.sv-bars').innerHTML = order.map(function(_, i){ return '<i class="' + (i < pos ? 'done' : '') + '"><b></b></i>'; }).join('');
+      sv.querySelector('.sv-rub').textContent = it.rub;
+      sv.querySelector('.sv-body').innerHTML = '<div class="sv-big">' + esc(it.big) + '</div><h3 class="sv-title" id="sv-t">' + esc(it.title) + '</h3>' +
+        (it.text ? '<p class="sv-text">' + esc(it.text) + '</p>' : '') + (it.todo ? '<div class="sv-todo"><b>Сделать</b>' + esc(it.todo) + '</div>' : '');
+      var a = sv.querySelector('.sv-btn'); a.href = o ? o.url : it.href; a.textContent = it.btn + ' →';
+      if(o){ a.target = '_blank'; a.rel = 'sponsored noopener'; } else { a.removeAttribute('target'); a.removeAttribute('rel'); }
+      var m = sv.querySelector('.sv-ad'); m.hidden = !o; m.textContent = o ? admark(o) : '';
+      markSeen(it.id); left = DUR; start();
+    }
+    function bar(){ return sv && sv.querySelectorAll('.sv-bars i b')[pos]; }
+    function tick(now){
+      if(!sv || paused) return;
+      var rest = left - (now - t0), b = bar();
+      if(b) b.style.width = Math.min(100, (1 - rest / DUR) * 100) + '%';
+      if(rest <= 0) return go(1);
+      raf = requestAnimationFrame(tick);
+    }
+    function start(){ cancelAnimationFrame(raf); paused = false; t0 = performance.now(); raf = requestAnimationFrame(tick); }
+    function pause(){ if(paused) return; paused = true; cancelAnimationFrame(raf); left -= performance.now() - t0; }
+    function resume(){ if(!paused || !sv) return; paused = false; t0 = performance.now(); raf = requestAnimationFrame(tick); }
+    function go(d){ var n = pos + d; if(n < 0) n = 0; if(n >= order.length) return close(); pos = n; render(); }
+    function key(e){ if(e.key === 'Escape') close(); else if(e.key === 'ArrowRight') go(1); else if(e.key === 'ArrowLeft') go(-1); }
+    function vis(){ if(sv){ if(document.hidden) pause(); else resume(); } }
+    function close(){
+      if(!sv) return; cancelAnimationFrame(raf); sv.parentNode.removeChild(sv); sv = null;
+      document.documentElement.style.overflow = '';
+      document.removeEventListener('keydown', key); document.removeEventListener('visibilitychange', vis);
+      if(opener) opener.focus();
+    }
+    function open(i, from){
+      opener = from; pos = Math.max(0, order.indexOf(i));
+      sv = document.createElement('div'); sv.className = 'sv';
+      sv.innerHTML = '<button type="button" class="sv-side p" aria-label="Предыдущая">‹</button>' +
+        '<div class="sv-card" role="dialog" aria-modal="true" aria-labelledby="sv-t"><div class="sv-bars"></div>' +
+        '<div class="sv-top"><span class="sv-rub"></span><button type="button" class="sv-x" aria-label="Закрыть">×</button></div>' +
+        '<div class="sv-body"></div><button type="button" class="sv-tap p" aria-label="Предыдущая"></button><button type="button" class="sv-tap n" aria-label="Следующая"></button>' +
+        '<div class="sv-foot"><a class="sv-btn" href="#"></a><small class="sv-ad" hidden></small></div></div>' +
+        '<button type="button" class="sv-side n" aria-label="Следующая">›</button>';
+      document.body.appendChild(sv); document.documentElement.style.overflow = 'hidden';
+      var card = sv.querySelector('.sv-card'), sx = 0, sy = 0, moved = false;
+      sv.addEventListener('click', function(e){
+        if(moved){ moved = false; return; }
+        if(e.target === sv) return close();
+        var c = e.target.closest('button'); if(!c) return;
+        if(c.classList.contains('sv-x')) close();
+        else if(c.classList.contains('p')) go(-1);
+        else if(c.classList.contains('n')) go(1);
+      });
+      // Удержание — пауза, свайп вниз — закрыть, свайп вбок — листать
+      card.addEventListener('pointerdown', function(e){ sx = e.clientX; sy = e.clientY; moved = false; if(!e.target.closest('.sv-btn,.sv-x')) pause(); });
+      card.addEventListener('pointerup', function(e){
+        var dx = e.clientX - sx, dy = e.clientY - sy;
+        if(dy > 80 && Math.abs(dy) > Math.abs(dx)){ moved = true; return close(); }
+        if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)){ moved = true; go(dx < 0 ? 1 : -1); return; }
+        resume();
+      });
+      card.addEventListener('pointercancel', resume);
+      document.addEventListener('keydown', key); document.addEventListener('visibilitychange', vis);
+      render(); sv.querySelector('.sv-x').focus();
+    }
+    btns.forEach(function(b){ b.addEventListener('click', function(){ open(+b.getAttribute('data-i'), b); }); });
+  })();
+
 })();
