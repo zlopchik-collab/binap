@@ -11,7 +11,7 @@ window.SITE_CONFIG = {
     vk:   "https://vk.com/binapru",
     dzen: "https://dzen.ru/binapru",
     tg:   "https://t.me/binapru",
-    vc:   ""
+    vc:   "https://vc.ru/id2143446"
   },
 
   // Рассылка. Адрес из формы подписки Unisender / SendPulse (поле action).
