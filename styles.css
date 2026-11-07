@@ -422,3 +422,36 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .ag-ex b{font:600 12px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
 .ag-ex p{margin:6px 0 0;font-size:15px}
 @media (max-width:640px){ .ag-ex{grid-template-columns:1fr} .ag-prompt pre{font-size:13px;max-height:420px} }
+
+/* ===== Раздел «Селлерам» ===== */
+.sl-calc{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:18px 0 8px;padding:16px 20px;border-radius:12px;background:var(--ink);color:var(--paper);text-decoration:none}
+.sl-calc span{display:flex;flex-direction:column;gap:4px;font-size:14.5px;opacity:.9}
+.sl-calc b{font:800 20px/1.2 var(--display);opacity:1}
+.sl-calc i{font-style:normal;font-size:26px;color:var(--accent)}
+.sl-steps{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 6px}
+.sl-steps a{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;font-size:14.5px}
+.sl-steps a b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--line-mistake);color:#fff;font:700 12px var(--mono)}
+.sl-stage{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:26px 0;border-bottom:1px solid var(--line)}
+.sl-num{width:48px;height:48px;border-radius:50%;background:var(--line-mistake);color:#fff;display:grid;place-items:center;font:900 22px var(--display)}
+.sl-body h2{font-size:clamp(22px,2.6vw,28px)}
+.sl-body>p{margin:6px 0 0}
+.sl-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:14px}
+.sl-check,.sl-links{margin:8px 0 0;padding-left:20px;display:grid;gap:8px;font-size:15.5px}
+.sl-check li::marker{content:"✓  ";color:var(--line-count);font-weight:700}
+.sl-offers{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:12px;margin-top:16px}
+.sl-offer{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.sl-offer[hidden]{display:none}
+.sl-offer .sl-ad{font:600 11px/1 var(--mono);color:var(--muted)}
+.sl-offer b{font:700 16px/1.25 var(--body)}
+.sl-offer p{margin:0;font-size:14px;color:var(--muted)}
+.sl-offer .btn{align-self:flex-start;margin-top:4px}
+.sl-offer .admark{font-size:11.5px;color:var(--muted)}
+.menu-extra{border-top:1px solid var(--line);margin-top:4px;padding-top:10px!important;font-weight:600;color:var(--ink)!important}
+.ue-break{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px}
+.ue-break summary{cursor:pointer;font-weight:600}
+.ue-break table{width:100%;margin-top:10px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.ue-break td{padding:6px 4px;border-bottom:1px solid var(--line)}
+.field small{font-size:12.5px}
+@media (max-width:720px){ .sl-stage{grid-template-columns:1fr;gap:10px} .sl-cols{grid-template-columns:1fr} .sl-calc b{font-size:18px} }
+@media (max-width:560px){ #calc-ue .two{grid-template-columns:1fr} }
+#calc-ue .two{align-items:start}

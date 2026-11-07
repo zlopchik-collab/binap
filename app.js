@@ -35,6 +35,10 @@
   });
 
   /* Партнёрские ссылки с маркировкой */
+  $$('[data-offer-box]').forEach(function(box){   // карточка оффера видна, только если есть ссылка и erid
+    var o = (C.OFFERS||{})[box.getAttribute('data-offer-box')];
+    box.hidden = !(o && o.url && o.erid);
+  });
   $$('a.offer').forEach(function(a){
     var o = (C.OFFERS||{})[a.getAttribute('data-offer')];
     if(o && o.url && o.erid){   // без erid рекламу не показываем: маркировка обязательна

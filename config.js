@@ -36,7 +36,14 @@ window.SITE_CONFIG = {
     buh: { url: "", label: "подключить онлайн-бухгалтерию", advertiser: "", erid: "" },
     ekv: { url: "", label: "сравнить тарифы эквайринга", advertiser: "", erid: "" },
     ins: { url: "", label: "оформить страховку для бизнеса", advertiser: "", erid: "" },
-    saas:{ url: "", label: "попробовать сервис для бизнеса", advertiser: "", erid: "" }
+    saas:{ url: "", label: "попробовать сервис для бизнеса", advertiser: "", erid: "" },
+    // Для раздела «Селлерам» (binap.ru/sellery/): блок показывается, только когда есть url и erid
+    kredit:     { url: "", label: "сравнить условия кредита", advertiser: "", erid: "" },
+    kep:        { url: "", label: "оформить электронную подпись", advertiser: "", erid: "" },
+    mark:       { url: "", label: "подключить сервис маркировки", advertiser: "", erid: "" },
+    uchet:      { url: "", label: "попробовать учёт товаров", advertiser: "", erid: "" },
+    analitika:  { url: "", label: "попробовать аналитику", advertiser: "", erid: "" },
+    fulfilment: { url: "", label: "рассчитать фулфилмент", advertiser: "", erid: "" }
   },
 
   // Ближайшие сроки для ИП на главной. Обновляйте раз в неделю.
