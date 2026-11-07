@@ -83,7 +83,7 @@
   var dl = document.getElementById('deadlines-list');
   if(dl && C.DEADLINES){
     var today = new Date(); today.setHours(0,0,0,0);
-    var items = C.DEADLINES.filter(function(d){ return new Date(d.date+'T00:00:00') >= today; }).slice(0,4);
+    var items = C.DEADLINES.filter(function(d){ return new Date(d.date+'T00:00:00') >= today; }).slice(0,3);
     if(!items.length){ dl.closest('.deadlines').hidden = true; }
     items.forEach(function(d){
       var p = d.date.split('-'), li = document.createElement('li');
