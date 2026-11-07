@@ -43,7 +43,10 @@ window.SITE_CONFIG = {
     mark:       { url: "", label: "подключить сервис маркировки", advertiser: "", erid: "" },
     uchet:      { url: "", label: "попробовать учёт товаров", advertiser: "", erid: "" },
     analitika:  { url: "", label: "попробовать аналитику", advertiser: "", erid: "" },
-    fulfilment: { url: "", label: "рассчитать фулфилмент", advertiser: "", erid: "" }
+    fulfilment: { url: "", label: "рассчитать фулфилмент", advertiser: "", erid: "" },
+    // Для разделов ПВЗ, франчайзи и вебмастерам
+    hosting:    { url: "", label: "выбрать хостинг", advertiser: "", erid: "" },
+    cpa:        { url: "", label: "подключиться к партнёрской сети", advertiser: "", erid: "" }
   },
 
   // Ближайшие сроки для ИП на главной. Обновляйте раз в неделю.
