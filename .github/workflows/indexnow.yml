@@ -11,6 +11,10 @@ on:
       all:
         description: "Отправить все страницы из sitemap.xml"
         type: boolean
+        default: false
+      fresh:
+        description: "Отправить все страницы из sitemap.xml с lastmod за 2 дня"
+        type: boolean
         default: true
 
 jobs:
@@ -25,14 +29,27 @@ jobs:
       - name: Отправляем адреса в IndexNow
         env:
           ALL: ${{ github.event_name == 'workflow_dispatch' && inputs.all }}
+          FRESH: ${{ github.event_name == 'workflow_dispatch' && inputs.fresh }}
         run: |
           python3 - <<'EOF'
           import json, os, re, subprocess, urllib.request
           host = open("CNAME").read().strip()
           key = next(f[:-4] for f in os.listdir(".") if re.fullmatch(r"[0-9a-f]{32}\.txt", f))
           base = f"https://{host}/"
+          import datetime
+          sm = dict((u, d) for u, d in re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", open("sitemap.xml").read()))
+          fresh = str(datetime.date.today() - datetime.timedelta(days=2))
+          def page_url(f):
+              # папка/index.html в sitemap записана как папка/ — иначе разделы не попадают в отправку
+              if f == "index.html":
+                  return base
+              if f.endswith("/index.html"):
+                  return base + f[:-len("index.html")]
+              return base + f
           if os.environ.get("ALL") == "true":
               urls = re.findall(r"<loc>(.*?)</loc>", open("sitemap.xml").read())
+          elif os.environ.get("FRESH") == "true":
+              urls = [u for u, d in sm.items() if d >= fresh]
           else:
               try:
                   changed = subprocess.check_output(["git", "diff", "--name-only", "HEAD~1", "HEAD"], text=True).split()
@@ -40,11 +57,8 @@ jobs:
                   changed = []
               # Отправляем только то, что действительно новое или обновлённое: lastmod в sitemap за последние 2 дня.
               # Остальные страницы меняются мелко (блоки «По теме», «Читать дальше») — их не шлём, чтобы не шуметь.
-              import datetime
-              sm = dict((u, d) for u, d in re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", open("sitemap.xml").read()))
-              fresh = str(datetime.date.today() - datetime.timedelta(days=2))
               pages = [f for f in changed if f.endswith(".html") and f != "404.html"]
-              urls = [u for u in (base if f == "index.html" else base + f for f in pages) if sm.get(u, "") >= fresh]
+              urls = [u for u in map(page_url, pages) if sm.get(u, "") >= fresh]
           if not urls:
               print("Изменённых страниц нет"); raise SystemExit
           body = json.dumps({"host": host, "key": key, "keyLocation": f"{base}{key}.txt", "urlList": urls[:10000]}).encode()
