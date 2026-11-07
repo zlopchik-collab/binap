@@ -51,7 +51,8 @@ window.SITE_CONFIG = {
     zapis:      { url: "", label: "подключить онлайн-запись", advertiser: "", erid: "" },
     ved:        { url: "", label: "открыть счёт для ВЭД", advertiser: "", erid: "" },
     platforma:  { url: "", label: "выбрать платформу для курсов", advertiser: "", erid: "" },
-    garantiya:  { url: "", label: "оформить банковскую гарантию", advertiser: "", erid: "" }
+    garantiya:  { url: "", label: "оформить банковскую гарантию", advertiser: "", erid: "" },
+    crm:        { url: "", label: "попробовать CRM", advertiser: "", erid: "" }
   },
 
   // Ближайшие сроки для ИП на главной. Обновляйте раз в неделю.

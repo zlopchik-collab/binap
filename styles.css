@@ -108,7 +108,7 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .more summary::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
 .more[open] summary{color:var(--ink);font-weight:600} .more[open] summary::after{transform:translateY(1px) rotate(225deg)}
 .more summary:hover{color:var(--ink)}
-.more .menu{position:absolute;right:0;top:calc(100% + 10px);background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.12);padding:8px;display:grid;min-width:270px;z-index:30}
+.more .menu{position:absolute;right:0;top:calc(100% + 10px);background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.12);padding:8px;display:grid;min-width:270px;z-index:30;max-height:calc(100vh - 90px);overflow-y:auto}
 .more .menu a{padding:8px 10px;border-radius:6px}
 .more .menu a:hover{background:var(--paper)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:var(--r);background:var(--accent);color:var(--accent-ink);font:700 15px/1 var(--body);padding:12px 16px;text-decoration:none;cursor:pointer;white-space:nowrap}
