@@ -100,8 +100,8 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .nav a{display:inline-flex;align-items:center;gap:7px;color:var(--muted);text-decoration:none;font-size:14px;padding-block:6px}
 .nav a:hover,.nav a[aria-current]{color:var(--ink);font-weight:600}
 @media (min-width:721px){ .top .nav{overflow:visible;column-gap:16px;justify-content:flex-end;flex-wrap:nowrap} }
-@media (min-width:721px) and (max-width:1250px){ .top .nav > a:nth-child(-n+3){display:none} }
-@media (min-width:721px) and (max-width:880px){ .top .nav > a:nth-child(4){display:none} }
+@media (min-width:721px) and (max-width:1250px){ .top .nav > a:nth-child(-n+2){display:none} }
+@media (min-width:721px) and (max-width:880px){ .top .nav > a:nth-child(3){display:none} }
 .more{position:relative}
 .more summary{list-style:none;cursor:pointer;color:var(--muted);font-size:14px;padding-block:6px;display:inline-flex;align-items:center;gap:5px;user-select:none}
 .more summary::-webkit-details-marker{display:none}
@@ -220,7 +220,7 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 
 /* Подвал */
 .foot{border-top:2px solid var(--ink);margin-inline:-16px;padding:32px 16px 14px;color:var(--muted);font-size:14px}
-.foot .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+.foot .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:24px}
 .foot a{display:inline-flex;align-items:center;gap:7px;color:var(--muted)}
 .foot b{font-family:var(--display);font-size:18px}
 .foot ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
@@ -455,3 +455,11 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 @media (max-width:720px){ .sl-stage{grid-template-columns:1fr;gap:10px} .sl-cols{grid-template-columns:1fr} .sl-calc b{font-size:18px} }
 @media (max-width:560px){ #calc-ue .two{grid-template-columns:1fr} }
 #calc-ue .two{align-items:start}
+
+/* «Для кого» */
+.aud-home{margin:0 0 36px}
+.aud-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.aud-chips a{padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font:600 14.5px/1.2 var(--body)}
+.aud-chips a:hover{border-color:var(--line-mistake)}
+.topics.aud a{background:var(--warn-soft)}
+@media (max-width:1000px){ .foot .wrap{grid-template-columns:1fr 1fr} }

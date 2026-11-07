@@ -46,7 +46,12 @@ window.SITE_CONFIG = {
     fulfilment: { url: "", label: "рассчитать фулфилмент", advertiser: "", erid: "" },
     // Для разделов ПВЗ, франчайзи и вебмастерам
     hosting:    { url: "", label: "выбрать хостинг", advertiser: "", erid: "" },
-    cpa:        { url: "", label: "подключиться к партнёрской сети", advertiser: "", erid: "" }
+    cpa:        { url: "", label: "подключиться к партнёрской сети", advertiser: "", erid: "" },
+    kassa:      { url: "", label: "подобрать онлайн-кассу", advertiser: "", erid: "" },
+    zapis:      { url: "", label: "подключить онлайн-запись", advertiser: "", erid: "" },
+    ved:        { url: "", label: "открыть счёт для ВЭД", advertiser: "", erid: "" },
+    platforma:  { url: "", label: "выбрать платформу для курсов", advertiser: "", erid: "" },
+    garantiya:  { url: "", label: "оформить банковскую гарантию", advertiser: "", erid: "" }
   },
 
   // Ближайшие сроки для ИП на главной. Обновляйте раз в неделю.
