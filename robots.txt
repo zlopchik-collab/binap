@@ -13,5 +13,6 @@ User-agent: PerplexityBot
 User-agent: ClaudeBot
 User-agent: Claude-SearchBot
 Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign
 
 Sitemap: https://binap.ru/sitemap.xml
