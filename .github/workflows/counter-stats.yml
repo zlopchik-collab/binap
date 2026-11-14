@@ -47,7 +47,7 @@ jobs:
               day, kind, *rest = it["k"].split("|")
               if kind == "p" and rest[0] == "/counter-test":
                   test[day] = (int(it.get("views", 0)), int(it.get("visits", 0)))
-          days = collections.defaultdict(lambda: {"views": 0, "visits": 0, "pages": {}, "src": {}, "dev": {}})
+          days = collections.defaultdict(lambda: {"views": 0, "visits": 0, "pages": {}, "src": {}, "dev": {}, "entry": {}})
           for it in items:
               day, kind, *rest = it["k"].split("|")
               if not day[:4].isdigit() or day < start: continue
@@ -58,6 +58,8 @@ jobs:
               elif kind == "p" and rest[0] != "/counter-test": d["pages"][rest[0]] = v
               elif kind == "r": d["src"][rest[0]] = n - (test.get(day, (0, 0))[1] if rest[0] == "direct" else 0)
               elif kind == "d": d["dev"][rest[0]] = n - (test.get(day, (0, 0))[1] if rest[0] == "d" else 0)
+              elif kind == "e" and len(rest) == 2 and rest[1] != "/counter-test" and n > 0:
+                  d["entry"].setdefault(rest[0], {})[rest[1]] = n
           out = {k: days[k] for k in sorted(days)}
           for d in out.values():
               d["src"] = {k: v for k, v in d["src"].items() if v > 0}; d["dev"] = {k: v for k, v in d["dev"].items() if v > 0}
