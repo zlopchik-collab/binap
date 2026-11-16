@@ -287,12 +287,23 @@
       card.className = 'sv-card st-' + it.c;
       sv.querySelector('.sv-bars').innerHTML = order.map(function(_, i){ return '<i class="' + (i < pos ? 'done' : '') + '"><b></b></i>'; }).join('');
       sv.querySelector('.sv-rub').textContent = it.rub;
-      sv.querySelector('.sv-body').innerHTML = '<div class="sv-big">' + esc(it.big) + '</div><h3 class="sv-title" id="sv-t">' + esc(it.title) + '</h3>' +
+      card.classList.toggle('has-vid', !!it.video);
+      // Видео-сторис: ролик со звуком на всю карточку, длина сторис = длина ролика
+      sv.querySelector('.sv-body').innerHTML = it.video
+        ? '<video class="sv-vid" playsinline preload="auto" poster="' + esc(it.video) + '.jpg"><source src="' + esc(it.video) + '.webm" type="video/webm"><source src="' + esc(it.video) + '.mp4" type="video/mp4"></video><h3 class="sv-title vh" id="sv-t">' + esc(it.title) + '</h3>'
+        : '<div class="sv-big">' + esc(it.big) + '</div><h3 class="sv-title" id="sv-t">' + esc(it.title) + '</h3>' +
         (it.text ? '<p class="sv-text">' + esc(it.text) + '</p>' : '') + (it.todo ? '<div class="sv-todo"><b>Сделать</b>' + esc(it.todo) + '</div>' : '');
       var a = sv.querySelector('.sv-btn'); a.href = o ? o.url : it.href; a.textContent = it.btn + ' →';
       if(o){ a.target = '_blank'; a.rel = 'sponsored noopener'; } else { a.removeAttribute('target'); a.removeAttribute('rel'); }
       var m = sv.querySelector('.sv-ad'); m.hidden = !o; m.textContent = o ? admark(o) : '';
-      markSeen(it.id); left = DUR; start();
+      markSeen(it.id); cancelAnimationFrame(raf);
+      var v = sv.querySelector('.sv-vid');
+      if(v){
+        paused = false;
+        v.addEventListener('timeupdate', function(){ var b = bar(); if(b && v.duration) b.style.width = (v.currentTime / v.duration * 100) + '%'; });
+        v.addEventListener('ended', function(){ go(1); });
+        var pr = v.play(); if(pr && pr.catch) pr.catch(function(){ v.muted = true; v.play().catch(function(){}); });
+      } else { left = DUR; start(); }
     }
     function bar(){ return sv && sv.querySelectorAll('.sv-bars i b')[pos]; }
     function tick(now){
@@ -303,8 +314,9 @@
       raf = requestAnimationFrame(tick);
     }
     function start(){ cancelAnimationFrame(raf); paused = false; t0 = performance.now(); raf = requestAnimationFrame(tick); }
-    function pause(){ if(paused) return; paused = true; cancelAnimationFrame(raf); left -= performance.now() - t0; }
-    function resume(){ if(!paused || !sv) return; paused = false; t0 = performance.now(); raf = requestAnimationFrame(tick); }
+    function vid(){ return sv && sv.querySelector('.sv-vid'); }
+    function pause(){ if(paused) return; paused = true; var v = vid(); if(v){ v.pause(); return; } cancelAnimationFrame(raf); left -= performance.now() - t0; }
+    function resume(){ if(!paused || !sv) return; paused = false; var v = vid(); if(v){ v.play().catch(function(){}); return; } t0 = performance.now(); raf = requestAnimationFrame(tick); }
     function go(d){ var n = pos + d; if(n < 0) n = 0; if(n >= order.length) return close(); pos = n; render(); }
     function key(e){ if(e.key === 'Escape') close(); else if(e.key === 'ArrowRight') go(1); else if(e.key === 'ArrowLeft') go(-1); }
     function vis(){ if(sv){ if(document.hidden) pause(); else resume(); } }

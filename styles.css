@@ -469,3 +469,14 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .tpl h3{font-size:16px;margin:16px 0 4px}
 .tpl-body p{margin:4px 0}
 .tpl-act{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 6px}
+/* Видео-сторис */
+.sv-card.has-vid{background:#FAF8F3;color:#18140F}
+.sv-card.has-vid::after{display:none}
+.sv-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#FAF8F3;z-index:0}
+.sv-card.has-vid .sv-bars,.sv-card.has-vid .sv-top{position:relative;z-index:2}
+.sv-card.has-vid .sv-bars i{background:rgba(24,20,15,.2)} .sv-card.has-vid .sv-bars i b{background:#18140F}
+.sv-card.has-vid .sv-x{color:#18140F}
+.sv-card.has-vid .sv-btn{background:#C62A1E;color:#fff}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.st-video{--c:#C62A1E;--d:#18140F}
+.st-i:has(.st-play){position:relative} .st-i .st-play{position:absolute;right:4px;top:58px;width:22px;height:22px;border-radius:50%;background:#C62A1E;color:#fff;font:700 10px/22px var(--body);text-align:center;border:2px solid var(--surface)}
