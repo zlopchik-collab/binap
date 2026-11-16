@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url><loc>https://binap.ru/</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://binap.ru/kalkulator-usn.html</loc><lastmod>2026-10-26</lastmod></url>
 <url><loc>https://binap.ru/kalkulator-vznosov-ip.html</loc><lastmod>2026-10-26</lastmod></url>
-<url><loc>https://binap.ru/sellery/</loc><lastmod>2026-11-16</lastmod></url>
-<url><loc>https://binap.ru/sellery/kalkulator-yunit-ekonomiki.html</loc><lastmod>2026-11-07</lastmod></url>
+<url><loc>https://binap.ru/sellery/</loc><lastmod>2026-11-16</lastmod><video:video><video:thumbnail_loc>https://binap.ru/video/unit-ekonomika-sellera.jpg</video:thumbnail_loc><video:title>Сколько остаётся с продажи за 1 000 ₽ на маркетплейсе</video:title><video:description>Юнит-экономика селлера на условном примере: закупка, комиссия, логистика с учётом выкупа, реклама, хранение и налог. Из 1 000 ₽ остаётся 80 ₽.</video:description><video:content_loc>https://binap.ru/video/unit-ekonomika-sellera.mp4</video:content_loc><video:duration>42</video:duration></video:video></url>
+<url><loc>https://binap.ru/sellery/kalkulator-yunit-ekonomiki.html</loc><lastmod>2026-11-07</lastmod><video:video><video:thumbnail_loc>https://binap.ru/video/unit-ekonomika-sellera.jpg</video:thumbnail_loc><video:title>Сколько остаётся с продажи за 1 000 ₽ на маркетплейсе</video:title><video:description>Юнит-экономика селлера на условном примере: закупка, комиссия, логистика с учётом выкупа, реклама, хранение и налог. Из 1 000 ₽ остаётся 80 ₽.</video:description><video:content_loc>https://binap.ru/video/unit-ekonomika-sellera.mp4</video:content_loc><video:duration>42</video:duration></video:video></url>
 <url><loc>https://binap.ru/ii-agenty/</loc><lastmod>2026-11-05</lastmod></url>
 <url><loc>https://binap.ru/kursy-ii/</loc><lastmod>2026-11-03</lastmod></url>
 <url><loc>https://binap.ru/podpiska.html</loc><lastmod>2026-09-28</lastmod></url>
@@ -29,11 +29,11 @@
 <url><loc>https://binap.ru/onlajn-shkolam/</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://binap.ru/podryadchikam/</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://binap.ru/turagentstvam/</loc><lastmod>2026-11-16</lastmod></url>
-<url><loc>https://binap.ru/agentstvam-nedvizhimosti/</loc><lastmod>2026-11-16</lastmod></url>
+<url><loc>https://binap.ru/agentstvam-nedvizhimosti/</loc><lastmod>2026-11-16</lastmod><video:video><video:thumbnail_loc>https://binap.ru/video/prezentaciya-kvartiry.jpg</video:thumbnail_loc><video:title>8 слайдов презентации квартиры, которые продают</video:title><video:description>Из чего состоит презентация квартиры для покупателя: обложка, причины купить, планировка, фото, дом, район, документы и контакт. Шаблон — бесплатно.</video:description><video:content_loc>https://binap.ru/video/prezentaciya-kvartiry.mp4</video:content_loc><video:duration>50</video:duration></video:video></url>
 <url><loc>https://binap.ru/taksoparkam/</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://binap.ru/strahovym-agentam/</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://binap.ru/kadrovym-agentstvam/</loc><lastmod>2026-11-16</lastmod></url>
-<url><loc>https://binap.ru/reklamnym-agentstvam/</loc><lastmod>2026-11-16</lastmod></url>
+<url><loc>https://binap.ru/reklamnym-agentstvam/</loc><lastmod>2026-11-16</lastmod><video:video><video:thumbnail_loc>https://binap.ru/video/nalog-reklamnogo-agentstva.jpg</video:thumbnail_loc><video:title>Налог рекламного агентства: 38 000 ₽ или 128 000 ₽ за один месяц</video:title><video:description>Почему при перепродаже рекламы налог агентства на УСН «доходы» в три раза выше, чем по агентскому договору. Условный пример с расчётом.</video:description><video:content_loc>https://binap.ru/video/nalog-reklamnogo-agentstva.mp4</video:content_loc><video:duration>53</video:duration></video:video></url>
 <url><loc>https://binap.ru/pvz/kalkulator-okupaemosti-pvz.html</loc><lastmod>2026-11-08</lastmod></url>
 <url><loc>https://binap.ru/franchajzi/kalkulator-okupaemosti-franshizy.html</loc><lastmod>2026-11-08</lastmod></url>
 <url><loc>https://binap.ru/vebmasteram/kalkulator-dohoda-s-trafika.html</loc><lastmod>2026-11-08</lastmod></url>
@@ -47,12 +47,12 @@
 <url><loc>https://binap.ru/taksoparkam/kalkulator-okupaemosti-mashiny-taksi.html</loc><lastmod>2026-11-08</lastmod></url>
 <url><loc>https://binap.ru/strahovym-agentam/kalkulator-dohoda-strahovogo-agenta.html</loc><lastmod>2026-11-08</lastmod></url>
 <url><loc>https://binap.ru/kadrovym-agentstvam/kalkulator-dohoda-kadrovogo-agentstva.html</loc><lastmod>2026-11-08</lastmod></url>
-<url><loc>https://binap.ru/reklamnym-agentstvam/kalkulator-dohoda-reklamnogo-agentstva.html</loc><lastmod>2026-11-08</lastmod></url>
+<url><loc>https://binap.ru/reklamnym-agentstvam/kalkulator-dohoda-reklamnogo-agentstva.html</loc><lastmod>2026-11-08</lastmod><video:video><video:thumbnail_loc>https://binap.ru/video/nalog-reklamnogo-agentstva.jpg</video:thumbnail_loc><video:title>Налог рекламного агентства: 38 000 ₽ или 128 000 ₽ за один месяц</video:title><video:description>Почему при перепродаже рекламы налог агентства на УСН «доходы» в три раза выше, чем по агентскому договору. Условный пример с расчётом.</video:description><video:content_loc>https://binap.ru/video/nalog-reklamnogo-agentstva.mp4</video:content_loc><video:duration>53</video:duration></video:video></url>
 <url><loc>https://binap.ru/reklamnym-agentstvam/shablony-kp-i-prezentacii.html</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://binap.ru/kadrovym-agentstvam/shablony-kp-i-brifa-na-podbor.html</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://binap.ru/podryadchikam/shablony-kp-i-grafika-rabot.html</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://binap.ru/turagentstvam/shablony-podborki-tura-i-pamyatki.html</loc><lastmod>2026-11-16</lastmod></url>
-<url><loc>https://binap.ru/agentstvam-nedvizhimosti/shablony-prezentacii-obekta-i-kp.html</loc><lastmod>2026-11-16</lastmod></url>
+<url><loc>https://binap.ru/agentstvam-nedvizhimosti/shablony-prezentacii-obekta-i-kp.html</loc><lastmod>2026-11-16</lastmod><video:video><video:thumbnail_loc>https://binap.ru/video/prezentaciya-kvartiry.jpg</video:thumbnail_loc><video:title>8 слайдов презентации квартиры, которые продают</video:title><video:description>Из чего состоит презентация квартиры для покупателя: обложка, причины купить, планировка, фото, дом, район, документы и контакт. Шаблон — бесплатно.</video:description><video:content_loc>https://binap.ru/video/prezentaciya-kvartiry.mp4</video:content_loc><video:duration>50</video:duration></video:video></url>
 <url><loc>https://binap.ru/strahovym-agentam/shablony-kp-po-strahovaniyu.html</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://binap.ru/onlajn-shkolam/shablony-prezentacii-kursa-i-kp.html</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://binap.ru/vebmasteram/shablon-mediakita.html</loc><lastmod>2026-11-16</lastmod></url>
