@@ -463,3 +463,9 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .aud-chips a:hover{border-color:var(--line-mistake)}
 .topics.aud a{background:var(--warn-soft)}
 @media (max-width:1000px){ .foot .wrap{grid-template-columns:1fr 1fr} }
+/* Шаблоны документов в разделах «Для кого» */
+.tpl{border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:22px 0;background:var(--card,transparent)}
+.tpl h2{margin-top:0}
+.tpl h3{font-size:16px;margin:16px 0 4px}
+.tpl-body p{margin:4px 0}
+.tpl-act{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 6px}
