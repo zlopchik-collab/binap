@@ -60,6 +60,9 @@ jobs:
               elif kind == "d": d["dev"][rest[0]] = n - (test.get(day, (0, 0))[1] if rest[0] == "d" else 0)
               elif kind == "e" and len(rest) == 2 and rest[1] != "/counter-test" and n > 0:
                   d["entry"].setdefault(rest[0], {})[rest[1]] = n
+          # Диагностика: сколько записей «источник → страница входа» есть в базе (включая тестовые заходы)
+          print("ENTRY_KEYS", sum(1 for it in items if it["k"].split("|")[1:2] == ["e"]),
+                [it["k"] for it in items if it["k"].split("|")[1:2] == ["e"] and it["k"].endswith("/counter-test")][-3:])
           out = {k: days[k] for k in sorted(days)}
           for d in out.values():
               d["src"] = {k: v for k, v in d["src"].items() if v > 0}; d["dev"] = {k: v for k, v in d["dev"].items() if v > 0}
