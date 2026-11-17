@@ -486,3 +486,4 @@ h3{font-size:19px;font-weight:700;line-height:1.25}
 .vid-fig video{width:100%;aspect-ratio:9/16;border-radius:12px;background:#000;display:block}
 .vid-fig figcaption{margin-top:8px;font-size:14.5px;line-height:1.45;color:var(--muted)}
 .vid-fig figcaption b{display:block;color:var(--ink);font-size:16px;margin-bottom:2px}
+.vid-main{margin:16px 0 8px}
