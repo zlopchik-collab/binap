@@ -1,5 +1,8 @@
 # Копируется сборщиком (build.py) в репозиторий сайта как .github/workflows/deploy-yc.yml.
 # После каждой публикации загружает сайт в бакет Yandex Object Storage (хранение в России).
+# При push загружаются только файлы, изменённые в публикации, а удалённые — удаляются из бакета:
+# Object Storage берёт деньги за каждую загрузку (операции PUT), а полная выкладка — это ~750 файлов.
+# Полная синхронизация — при ручном запуске (workflow_dispatch) или если прошлый коммит недоступен.
 # Пока в настройках репозитория нет секретов YC_KEY_ID и YC_SECRET — шаг пропускается,
 # сайт продолжает работать на GitHub Pages.
 name: Yandex Object Storage
@@ -8,6 +11,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+
+concurrency: deploy-yc
 
 jobs:
   deploy:
@@ -18,18 +23,16 @@ jobs:
       BUCKET: ${{ vars.YC_BUCKET || 'binap.ru' }}
     steps:
       - uses: actions/checkout@v4
-      - name: Загружаем сайт в бакет
+      - name: Загружаем изменения в бакет
         if: env.YC_KEY_ID != '' && env.YC_SECRET != ''
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.YC_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET }}
           AWS_DEFAULT_REGION: ru-central1
-        run: |
-          EP=https://storage.yandexcloud.net
-          EXCL=(--exclude ".git/*" --exclude ".github/*" --exclude "CNAME" --exclude "README.md")
-          # HTML — короткий кэш, чтобы новые статьи появлялись сразу; остальное — подольше
-          aws s3 sync . "s3://$BUCKET" --endpoint-url $EP --delete "${EXCL[@]}" --exclude "*.html" --exclude "*.xml" --exclude "*.txt" --cache-control "public, max-age=86400"
-          aws s3 sync . "s3://$BUCKET" --endpoint-url $EP "${EXCL[@]}" --exclude "*" --include "*.html" --include "*.xml" --include "*.txt" --cache-control "public, max-age=300"
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+        run: bash .github/deploy-yc.sh
       - name: Секретов нет — пропускаем
         if: env.YC_KEY_ID == '' || env.YC_SECRET == ''
         run: echo "YC_KEY_ID / YC_SECRET не заданы — сайт остаётся только на GitHub Pages."
