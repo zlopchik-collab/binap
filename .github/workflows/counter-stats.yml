@@ -1,6 +1,6 @@
 # Копируется сборщиком (build.py) в репозиторий сайта как .github/workflows/counter-stats.yml.
 # Сводка собственного счётчика посещаемости (без персональных данных) за последние 7 дней.
-# Запуск вручную (workflow_dispatch) и по понедельникам. Ключ — секреты YC_KEY_ID / YC_SECRET
+# Запуск вручную (workflow_dispatch) и ежедневно до утреннего выпуска. Ключ — секреты YC_KEY_ID / YC_SECRET
 # (у сервисного аккаунта есть роль ydb.editor), адрес базы — переменная COUNTER_ENDPOINT или значение по умолчанию.
 name: Counter stats
 
@@ -12,7 +12,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: "15 4 * * 1"
+    - cron: "0 3 * * *"
 
 jobs:
   stats:
@@ -26,7 +26,7 @@ jobs:
       - name: Тестовый заход
         if: ${{ inputs.test_hit }}
         run: |
-          curl -sS -D - -o /dev/null -X POST -H "Content-Type: text/plain" \
+          curl -sS -D - -o /dev/null -X POST -H "Content-Type: text/plain" \\
             -d '{"p":"/counter-test","r":"","d":"d","v":1}' "$FUNC" | grep -iE "^HTTP|^x-err" || true
           sleep 3
       - name: Сводка за 30 дней
